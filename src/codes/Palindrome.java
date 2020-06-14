@@ -1,8 +1,9 @@
+package codes;
 
 public class Palindrome {
 
 	public static void main(String[] args) {
-		int x = 122;
+		int x = 121;
 		
 		System.out.println(isPalindrome(x));
 	}
