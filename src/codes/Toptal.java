@@ -1,7 +1,6 @@
 package codes;
 
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 
 public class Toptal {
 
@@ -9,7 +8,10 @@ public class Toptal {
 
         String s  = "babaa";
        // solution(s);
-        solution2("ABBBCCDDCCC", 3);
+       // solution2("ABBBCCDDCCC", 3);
+        String r = "AAAAAAAAAAABXXAAAAAAAAAA";//"ABCDDDEFG";//"ABBBCCDDCCC";
+        int l =3;
+        removeLetter(r,l);
     }
 
     public static int solution(String S) {
@@ -80,5 +82,40 @@ public class Toptal {
         }
         //System.out.println(sb.toString());
         return len;
+    }
+
+    private static void removeLetter(String s,int l){
+
+        for(int k = 0;k < s.length();k++) {
+
+            HashSet<Character>seen = new HashSet<>();
+            StringBuilder sb = new StringBuilder();
+            StringBuilder sb2 = new StringBuilder(s);
+            if(k+l <= sb2.length())
+                sb2.delete(k,k+l);
+
+            for (int i = 0; i < sb2.length(); i++) {
+                char c = sb2.charAt(i);
+
+                int count = 0;
+                if (seen.contains(c))
+                    continue;
+                else
+                    for (int j = 0; j < sb2.toString().length(); j++) {
+                          if (c == sb2.charAt(j))
+                            count++;
+                    }
+                seen.add(c);
+                if (count == 1)
+                    sb.append(c);
+                else
+                    sb.append(count).append(c);
+
+            }
+
+            System.out.println(sb+" >> "+sb.length());
+
+        }
+
     }
 }
