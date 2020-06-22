@@ -14,7 +14,7 @@ import java.util.Set;
 public class HappyNumber {
 
     public static void main(String[] args) {
-        int n = 22;
+        int n = 19;
         System.out.println(isHappyNumber(n));
     }
 
