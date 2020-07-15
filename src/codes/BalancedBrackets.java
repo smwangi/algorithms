@@ -77,27 +77,6 @@ public class BalancedBrackets {
     }
 
     /**
-     * Using str.replace method
-     * @param str
-     * @return
-     */
-    static String isBalanced(String str){
-        if(str == null || str.length() % 2 != 0)
-            return "NO";
-
-        char[] chars = str.toCharArray();
-
-        while (str.contains("()" )|| str.contains("[]") || str.contains("{}")){
-            str = str.replace("\\(\\)","")
-                    .replace("\\{\\}","")
-                    .replace("\\[\\]","");
-        }
-        if(str.length()==0)
-            return "YES";
-        return "NO";
-    }
-
-    /**
      * Credit Baeldung
      * Deque is a form of the Queue that provides add, retrieve and peek operations at both ends of the queue.
      * We will leverage the Last-In-First-Out (LIFO) order feature of this data structure to check for the balance in the input string.
