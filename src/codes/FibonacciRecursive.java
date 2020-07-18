@@ -1,9 +1,10 @@
+package codes;
 
 public class FibonacciRecursive {
 
     public static void main(String[] args) {
         
-        int k = recursive(2);
+        int k = recursive(4);
         System.out.println(k);
     }
 
