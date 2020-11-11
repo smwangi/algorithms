@@ -1,8 +1,4 @@
 
-package codes;
-
-import java.util.Arrays;
-
 public class PermutationMain {
 
     public static void main(String[] args) {

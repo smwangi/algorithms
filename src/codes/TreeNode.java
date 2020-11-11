@@ -1,5 +1,3 @@
-package codes;
-
 public class TreeNode {
     int val;
     TreeNode left;

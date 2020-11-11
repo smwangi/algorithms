@@ -1,4 +1,3 @@
-package codes;
 
 /**
  * Given a binary tree, determine if it is a valid binary search tree (BST).
@@ -18,6 +17,8 @@ package codes;
  *
  * Input: [2,1,3]
  * Output: true
+ *
+ *
  * Example 2:
  *
  *     5
@@ -37,9 +38,11 @@ public class ValidateBST {
 
     public static void main(String[] args) {
         ValidateBST validateBST = new ValidateBST();
-        TreeNode root = new TreeNode(2);
+        TreeNode root = new TreeNode(5);
         root.left = new TreeNode(1);
-        root.right = new TreeNode(3);
+        root.right = new TreeNode(4);
+        root.right.left = new TreeNode(3);
+        root.right.right = new TreeNode(6);
         validateBST.isValidBST(root);
     }
     public boolean isValidBST(TreeNode root) {
@@ -56,7 +59,9 @@ public class ValidateBST {
                 ans = false;
                 return;
             }
+        System.out.println(prev+" <> "+root.val);
         prev = root.val;
-            inOrder(root.right);
+        //System.out.println(prev+" <> "+root.val);
+        inOrder(root.right);
     }
 }

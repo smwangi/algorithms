@@ -6,7 +6,8 @@ import java.util.*;
 import java.util.concurrent.ConcurrentSkipListSet;
 
 /**
- * Two String are isomorphic if all occurences of each character in X can be replaced with another character to get Y and vice-versa
+ * Two String are isomorphic if all occurences of each character in X can be replaced with another
+ * character to get Y and vice-versa
  * Consider Strings "ACAB" and "XCXY". They are isomorphic as we can map 'A'->'X' 'B' -> 'Y' and 'C' -> 'C'
  * Mapping from a character to itself is allowed, but no two characters may be replaced by the same character.
  *

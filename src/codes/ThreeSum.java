@@ -1,9 +1,8 @@
-package codes;
-
 import java.util.*;
 
 /**
- * Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+ * Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0?
+ * Find all unique triplets in the array which gives the sum of zero.
  *
  * Note:
  *
@@ -19,30 +18,25 @@ import java.util.*;
  *   [-1, -1, 2]
  * ]
  *
- * Hide Hint #1
- * So, we essentially need to find three numbers x, y, and z such that they add up to the given value. If we fix one of the numbers say x, we are left with the two-sum problem at hand!
- *    Hide Hint #2
- * For the two-sum problem, if we fix one of the numbers, say
+ * Hint #1
+ * So, we essentially need to find three numbers x, y, and z such that they add up to the given value.
+ * If we fix one of the numbers say x, we are left with the two-sum problem at hand!
  *
- * x
+ * Hint #2
+ * For the two-sum problem, if we fix one of the numbers, say x, we have to scan the entire array to find the next number y
  *
- * , we have to scan the entire array to find the next number
+ * which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster?
  *
- * y
- *
- * which is
- *
- * value - x
- *
- * where value is the input parameter. Can we change our array somehow so that this search becomes faster?
- *    Hide Hint #3
- * The second train of thought for two-sum is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?
+ * Hint #3
+ * The second train of thought for two-sum is, without changing the array, can we use additional space somehow?
+ * Like maybe a hash map to speed up the search?
  */
 public class ThreeSum {
     public static void main(String[] args) {
         ThreeSum sum = new ThreeSum();
         int[]arr = {3,0,-2,-1,1,2};
         sum.threeSumz(arr).forEach(x -> System.out.println(x));
+        sum.threeSums(arr).forEach(x -> System.out.println(x));
     }
 
     private List<List<Integer>> threeSums(int[]nums){
@@ -72,6 +66,7 @@ public class ThreeSum {
             int left = i + 1;
             int right = nums.length-1;
             while(left < right) {
+
                 int current = nums[i] + nums[left] + nums[right];
                 if (current == 0) {
                     List<Integer> triplet = new LinkedList<Integer>();

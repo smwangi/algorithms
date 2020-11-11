@@ -1,5 +1,3 @@
-package codes;
-
 import java.util.Arrays;
 
 public class Fibonnaci {

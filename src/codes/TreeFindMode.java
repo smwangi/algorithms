@@ -1,5 +1,3 @@
-package codes;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -40,7 +38,7 @@ public class TreeFindMode {
         TreeFindMode fMode = new TreeFindMode();
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
-        root.right = new TreeNode(2);
+        root.right.left = new TreeNode(2);
         fMode.findMode(root);
     }
     public int[] findMode(TreeNode root) {

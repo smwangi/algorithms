@@ -7,7 +7,8 @@ import java.util.*;
     
     Next scan the shift variable which denotes the number of times the array is supposed to be rotated.
     
-    Create another array called ” temp ” and check if shift is greater than the size of the array. If so using a while loop decrement the value of shift.
+    Create another array called ” temp ” and check if shift is greater than the size of the array.
+    If so using a while loop decrement the value of shift.
     
     Then store the elements of the initial array ” arr ” in the ” temp ” array by using the logic below.
     
@@ -17,7 +18,7 @@ import java.util.*;
 public class ArrayLeftShift {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+         Scanner scanner = new Scanner(System.in);
         
         System.out.println("Enter size of the array.. ");
         int size = scanner.nextInt();

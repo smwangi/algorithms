@@ -1,4 +1,3 @@
-package codes;
 
 /**
  * Given a binary search tree with non-negative values, find the minimum absolute difference between values of any two nodes.
@@ -22,7 +21,7 @@ package codes;
 public class MinAbsDiffBST {
 
     int minDiff;
-    Integer prev = 0;
+    Integer prev = null;
     public static void main(String[] args) {
 
         TreeNode node = new TreeNode();
@@ -38,7 +37,7 @@ public class MinAbsDiffBST {
        minDiff = Integer.MAX_VALUE;
        inOrder(root);
        System.out.println(minDiff);
-        return minDiff;
+       return minDiff;
     }
 
     private void inOrder(TreeNode root){

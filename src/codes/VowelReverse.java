@@ -8,10 +8,11 @@ public class VowelReverse {
         VowelReverse reverse = new VowelReverse();
         String s = "leetcode";
         System.out.println(reverse.reverseVowels(s));
+        rev("Samuel is Cooking");
     }
 
     public String reverseVowels(String s) {
-        Set<Character> characterSet = new HashSet<>(Arrays.asList('a','e','i','o','u'));
+        Set<Character> characterSet = new HashSet<>(Arrays.asList('a', 'e','i','o','u'));
         int l = 0,r = s.length()-1;
         char[] chars = s.toCharArray();
         while (l < r){
@@ -29,6 +30,17 @@ public class VowelReverse {
 
         }
         return new String(chars);
+    }
+
+    static void rev(String s){
+        char[] chars = s.toCharArray();
+        int l = 0,r = s.length()-1;
+        while (l < r){
+            swap(chars,l,r);
+            l++;
+            r--;
+        }
+        System.out.println(Arrays.toString(chars));
     }
 
     private static void swap(char[] c,int l, int r){

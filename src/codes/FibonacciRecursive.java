@@ -1,5 +1,3 @@
-package codes;
-
 import java.util.Arrays;
 
 /**
@@ -51,10 +49,12 @@ public class FibonacciRecursive {
 
     public static void main(String[] args) {
         
-        int k = recursive(9);
-        System.out.println(k);
+        //int k = recursive(9);
+        //System.out.println(k);
         System.out.println(fib(9));
         System.out.println(fibOptimized(9));
+        System.out.println(Arrays.toString(fibMemoize(9)));
+        System.out.println(printFibRecursive(9));
     }
 
     private static int recursive(int n){
@@ -85,7 +85,7 @@ public class FibonacciRecursive {
 
     //Space Optimized Method
     static int fibOptimized(int n){
-        int a = 0,b=1,c;
+        int a = 0,b = 1,c;
 
         if(n == 0)return a;
 
@@ -96,5 +96,26 @@ public class FibonacciRecursive {
         }
 
         return b;
+    }
+
+    static int[] fibMemoize(int n){
+
+        int[] a = new int[n+1];
+       // a[0] = 0;
+        a[1] = 1;
+
+        for(int i = 2; i<=n; i++){
+            a[i] = a[i-1]+a[i-2];
+        }
+        System.out.print("Nth Fib "+a[4]+" ");
+        return a;
+    }
+
+    static int printFibRecursive(int n){
+        //System.out.print(n+" ");
+        if(n == 0 || n==1){
+            return n;
+        }
+        return printFibRecursive(n-1)+printFibRecursive(n-2);
     }
 }

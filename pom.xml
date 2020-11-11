@@ -4,7 +4,10 @@
   <artifactId>algorithms-java</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>javaAlgorithms</name>
-  
+    <properties>
+        <maven.compiler.target>13</maven.compiler.target>
+        <maven.compiler.source>13</maven.compiler.source>
+    </properties>
   <dependencies>
   <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-library -->
 <dependency>
