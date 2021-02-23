@@ -22,8 +22,30 @@ public class SubArraySumEqualK {
         int[] arr = {1,1,1};
         int k = 2;
         System.out.println(sumEqualK.subArraySum(arr,k));
+        System.out.println(subarraySum(arr,k));
     }
 
+    /**
+     * Brute Force
+     * The simplest method is to consider every possible subarray of the given nums array,
+     * find the sum of the elements of each of those subarrays and check for the equality of the sum obtained with the given k.
+     * Whenever the sum equals kkk, we can increment the count used to store the required result.
+     */
+    public static int subarraySum(int[] nums, int k){
+
+        int count = 0;
+        for(int i = 0; i< nums.length;i++){
+            for(int j=i+1;j<= nums.length;j++){
+                int sum = 0;
+                for(int l = i; l<j;l++)
+                    sum += nums[l];
+
+                if(sum == k)
+                    count++;
+            }
+        }
+        return count;
+    }
     /**
      * Algorithm
      *

@@ -44,24 +44,15 @@ public class TwoSum {
 	 *
 	 * Complexity Analysis:
 	 *
-	 * Time complexity : O(n)O(n). We traverse the list containing nn elements only once.
-	 * Each look up in the table costs only O(1)O(1) time.
+	 * Time complexity : O(n). We traverse the list containing n elements only once.
+	 * Each look up in the table costs only O(1) time.
 	 *
-	 * Space complexity : O(n)O(n). The extra space required depends on the number of items stored in the hash table,
-	 * which stores at most nn elements.
+	 * Space complexity : O(n). The extra space required depends on the number of items stored in the hash table,
+	 * which stores at most n elements.
 	 */
 	private static int[] twoSumDP(int[] nums, int target){
 		Map<Integer, Integer> map = new HashMap<>();
 
-		/*for(int i =0; i < nums.length; i++){
-
-			if(map.containsKey(target - nums[i])){
-				return new int[]{map.get(target-nums[i]),i};
-			}else{
-				map.put(nums[i],i);
-			}
-		}
-		return new int[0];*/
 		for(int i = 0; i< nums.length; i++){
 			if(map.containsKey(target-nums[i])){
 				return new int[]{map.get(target-nums[i]),i};
