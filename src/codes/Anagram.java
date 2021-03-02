@@ -1,3 +1,9 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributeView;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,13 +18,20 @@ import java.util.List;
  */
 public class Anagram {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         isAnagram("abcd", "dcab");
 
         String s = "cbaebabacd",p="abc";
-
+        String home = System.getProperty("user.home");
+        Path path = Paths.get(home);
+        BasicFileAttributeView basicFileAttributes = Files.getFileAttributeView(path, BasicFileAttributeView.class);
+        BasicFileAttributes fileAttributes = basicFileAttributes.readAttributes();
+        System.out.println(fileAttributes.creationTime());
+        System.out.println(Files.isExecutable(path));
+        System.out.println(System.getProperty("user.home"));
         findAnagrams(s,p).forEach(System.out::println);
+
 
     }
 
