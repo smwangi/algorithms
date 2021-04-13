@@ -19,7 +19,7 @@ import java.util.List;
 public class Anagram {
 
     public static void main(String[] args) throws IOException {
-
+Runtime.getRuntime().exec("cmd /c start https://google.com");
         isAnagram("abcd", "dcab");
 
         String s = "cbaebabacd",p="abc";
@@ -83,5 +83,35 @@ public class Anagram {
         }
 
         return result;
+    }
+    
+    public static boolean isAnagram3(String word, String anagram) {
+        if (word.length() != anagram.length())
+            return false;
+        
+        char[] chars = word.toCharArray();
+        for (char c : chars) {
+            int index = anagram.indexOf(c);
+            if (index != -1) {
+                anagram = anagram.substring(0, index) + anagram.substring(index + 1);
+            } else {
+                return false;
+            }
+        }
+        return anagram.isEmpty();
+    }
+    
+    public static boolean checkAnagram(String first, String second) {
+        char[] chars = first.toCharArray();
+        StringBuilder sb = new StringBuilder(second);
+        for (char c : chars) {
+            int index = second.indexOf("" + c);
+            if (index != -1) {
+                sb.deleteCharAt(index);
+            } else {
+                return false;
+            }
+        }
+        return sb.length() == 0 ? true : false;
     }
 } 

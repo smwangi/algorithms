@@ -30,4 +30,43 @@ public class MissingNumber {
         }
         return 0;
     }
+    
+    /**
+     * Input: numbers={1,2,3,5,6}
+     * Output: 4
+     * numbers={1,3,2,5,6}
+     * Output: 4
+     * Approach:
+     * Sort an Array using Arrays.sort(arr).
+     * Since Array is sorted, we can compare the array indexes with the values.
+     * If anyone of the array value not equal to array Index, then we can say that, that is a missed number.
+     */
+    static int getMissingNumber(int[] nums) {
+        Arrays.sort(nums);
+        int missed = 0;
+        for (int i = 0; i < nums.length; i++) {
+            int index = i + 1;
+            if(nums[i] != index) {
+                missed = index;
+                break;
+            }
+        }
+        return missed;
+    }
+    
+    /**
+     * Find a missing number in an array (Un-Sorted)
+     * (n+1)*(n+2)/2
+     * @param nums
+     * @return
+     */
+    static int getMissingNumber2(int[] nums) {
+        int n = nums.length;
+        int total = (n+1)*(n+2)/2;
+        
+        for (int i = 0; i < nums.length; i++) {
+            total -= nums[i];
+        }
+        return total;
+    }
 }

@@ -10,4 +10,8 @@ public class Node<T> {
     public Node(T data) {
         this.data = data;
     }
+    
+    public boolean isLeaf() {
+        return left == null ? right == null:false;
+    }
 }

@@ -35,6 +35,7 @@ public class BalancedBinaryTree {
         root.right.right =  new TreeNode(7);
 
         System.out.println(balancedBinaryTree.isBalanced(root));
+        System.out.println(maxDepth(root));
     }
 
     public boolean isBalanced(TreeNode root) {
@@ -55,5 +56,38 @@ public class BalancedBinaryTree {
             return 0 ;
 
         return 1+ Math.max(height(node.left),height(node.right));
+    }
+    boolean balance = true;
+    public boolean isBalanced2(TreeNode root) {
+        if (root == null) {
+            return balance;
+        }
+        isBalancedHelper(root);
+        return balance;
+    }
+    
+    public int isBalancedHelper(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        
+        int left = isBalancedHelper(root.left);
+        int right = isBalancedHelper(root.right);
+        
+        if (Math.abs(left - right) > 1) balance = false;
+        return 1 + Math.max(left, right);
+    }
+    
+    /**
+     * Given a binary tree, find its maximum depth.
+     *
+     * The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+     */
+    public static int maxDepth(TreeNode root) {
+        if (root == null) return 0;
+        int left = maxDepth(root.left);
+        int right = maxDepth(root.right);
+        int max = Math.max(left, right);
+        return max + 1;
     }
 }

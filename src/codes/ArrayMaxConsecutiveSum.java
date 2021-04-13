@@ -1,4 +1,3 @@
-package codes;
 
 public class ArrayMaxConsecutiveSum {
     public static void main(String[] args) {

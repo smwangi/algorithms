@@ -1,4 +1,3 @@
-package codes;
 
 public class DivisibleSumPairs {
     public static void main(String[] args) {

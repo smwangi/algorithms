@@ -1,10 +1,41 @@
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.*;
 
 public class VowelReverse {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JsonProcessingException, IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+        
+        Map<String,String> map = new HashMap<>();
+     
+        map.put("Command","LoadForIntegration");
+        map.put("IsIntregated","true");
+        map.put("AccType","Account 01020007428000");
+        map.put("Amount","100");
+        map.put("TransId","11");
+        /*map.put("Username","fbesigcap");
+        map.put("Password","P@ssw0rd");*/
+        map.put("Username","gochieng");
+        map.put("Password","pass123*");
+        map.put("ORGURL","http://server/bank/return.html");
+        
+        ObjectMapper mapper = new ObjectMapper();
+        String requestBody = mapper.writeValueAsString(map);
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://nbksigcap/webret/webretrieve.dll"))
+                .POST(HttpRequest.BodyPublishers.ofString(requestBody))
+                .build();
+    
+        HttpResponse<String> response = client.send(request,HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body());
+        
         VowelReverse reverse = new VowelReverse();
         String s = "leetcode";
         System.out.println(reverse.reverseVowels(s));

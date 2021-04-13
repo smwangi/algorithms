@@ -38,11 +38,12 @@ public class FirstInDuplicate {
     public static void main(String[] args) {
         int[] a = {2, 1, 3, 5, 3, 2};
         System.out.println(firstDuplicate(a));
+        System.out.println(firstDuplicate2(a));
     }
-    static int firstDuplicate(int[] a){
+    static int firstDuplicate(int[] a) {
         int dup = -1;
         Set<Integer> set = new HashSet<>();
-        for (int i=0; i< a.length;i++){
+        for (int i=0; i< a.length; i++) {
             if(set.contains(a[i])){
              dup = a[i];
              break;
@@ -50,5 +51,17 @@ public class FirstInDuplicate {
             set.add(a[i]);
         }
         return dup;
+    }
+
+    static int firstDuplicate2(int[] a) {
+        for (int i = 0; i < a.length; i++) {
+            if(a[Math.abs(a[i]) - 1] < 0) {
+                return Math.abs(a[i]);
+            } else {
+                System.out.print(Math.abs(a[i]) -1+" ");
+                a[Math.abs(a[i]) - 1] = -a[Math.abs(a[i]) - 1];
+            }
+        }
+        return -1;
     }
 }

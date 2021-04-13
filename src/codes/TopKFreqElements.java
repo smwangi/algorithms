@@ -1,4 +1,3 @@
-package codes;
 
 import java.util.*;
 
@@ -29,6 +28,7 @@ public class TopKFreqElements {
         int[] nums = {1,1,1,2,2,3};
         int k = 2;
         kFreqElements.topKFrequent(nums,k);
+        System.out.println(Arrays.toString(topKFrequent2(nums, k)));
     }
 
     public int[] topKFrequentX(int[] nums, int k) {
@@ -74,5 +74,45 @@ public class TopKFreqElements {
         }
         System.out.println(Arrays.toString(result));
         return result;
+    }
+    
+    public static int[] topKFrequent2(int[] nums, int k) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num: nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+        
+        PriorityQueue<Integer> pq = new PriorityQueue<>(nums.length, (n1, n2) -> map.get(n2).compareTo(map.get(n1)));
+        
+        for (int num : map.keySet()) {
+            pq.add(num);
+        }
+        
+        int[] result = new int[k];
+        for (int i = 0; i < k; i++) {
+            result[i] = pq.poll();
+        }
+        return result;
+    }
+    
+    public int[] topKFrequent3(int[] nums, int k) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
+        }
+        PriorityQueue<Map.Entry<Integer, Integer>> pq = new PriorityQueue<>((n1, n2) -> n1.getValue() - n2.getValue());
+        for (Map.Entry<Integer, Integer> en : map.entrySet())  {
+            pq.add(en);
+            if (pq.size() > k) {
+                pq.poll();
+            }
+        }
+        int[] res = new int[k];
+        int i = 0;
+        while (!pq.isEmpty()) {
+            res[i] = pq.poll().getKey();
+            i++;
+        }
+        return res;
     }
 }

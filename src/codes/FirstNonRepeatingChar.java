@@ -1,10 +1,10 @@
-package codes;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- *  Given a string s consisting of small English letters, find and return the first instance of a non-repeating character in it. If there is no such character, return '_'.
+ *  Given a string s consisting of small English letters, find and return the first instance of a non-repeating character in it.
+ *  If there is no such character, return '_'.
  *
  * Example
  *
@@ -48,22 +48,23 @@ public class FirstNonRepeatingChar {
 
     public static void main(String[] args) {
         FirstNonRepeatingChar firstNonRepeatingChar  = new FirstNonRepeatingChar();
-        String s = "abacabaabacaba";
+        String s = "abacabad";//""abacabaabacaba";
        System.out.println( firstNonRepeatingChar.firstNonRepeating(s));
        System.out.println(firstNonRepeatingChar.firstNon(s));
+       System.out.println(firstNonRepeatingIntArr(s));
     }
 
-    char firstNonRepeating(String s){
+    char firstNonRepeating(String s) {
         char nonRepeating = '_';
         List<Character> ls = s.chars().mapToObj(c-> (char)c).collect(Collectors.toList());
 
-        for(int i =0; i < s.length(); i++){
+        for(int i =0; i < s.length(); i++) {
 
             int pos = i;
             if(ls.stream().filter(x -> x == s.charAt(pos)).count() > 1){
                 continue;
             }
-            else{
+            else {
                 nonRepeating = s.charAt(i);
                 break;
             }
@@ -71,19 +72,32 @@ public class FirstNonRepeatingChar {
 
         return nonRepeating;
     }
-    char firstNon(String s){
+
+    char firstNon(String s) {
        char nonRepeating = '_';
        Map<Character,Integer> map = new HashMap<>();
 
-       for(int i =0;i< s.length();i++) {
+       for(int i =0; i< s.length(); i++) {
             map.put(s.charAt(i),map.getOrDefault(s.charAt(i),0)+1);
        }
 
-        for(int i =0;i< s.length();i++) {
+       for(int i =0;i< s.length();i++) {
           if(map.get(s.charAt(i)) == 1)
               return s.charAt(i);
         }
 
       return nonRepeating;
+    }
+
+    static char firstNonRepeatingIntArr(String s) {
+        int[] chars = new int[26];
+
+        for(char c : s.toCharArray()) {
+            chars[c-'a']++;
+        }
+        for(char c : s.toCharArray()) {
+            if(chars[c - 'a'] == 1)return c;
+        }
+        return '_';
     }
 }

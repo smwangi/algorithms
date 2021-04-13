@@ -50,8 +50,14 @@ public class ValidateBST {
         System.out.println(ans);
         return ans;
     }
+    
+    /**
+     * Since inorder traversal of BST is ascending, so we can check the sequence. Time is O(n) and space is O(h).
+     * h is the height of the stack which is the tree's height.
+     * @param root
+     */
     private void inOrder(TreeNode root){
-        if(root ==  null)return;
+        if(root ==  null) return;
 
         inOrder(root.left);
         if(prev != null)
@@ -64,4 +70,26 @@ public class ValidateBST {
         //System.out.println(prev+" <> "+root.val);
         inOrder(root.right);
     }
+    
+    /**
+     * Java Solution 1 - Recursive
+     *
+     * All values on the left sub tree must be less than parent and parent's parent,
+     * and all values on the right sub tree must be greater than parent and parent's parent.
+     * So we just check the boundaries for each node.
+     */
+    public boolean isValidBST2(TreeNode root) {
+        return isValidBST2(root, Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY);
+    }
+    public boolean isValidBST2(TreeNode p, double min, double max) {
+        if (p == null) {
+            return true;
+        }
+        
+        if(p.val <= min || p.val >= max) return false;
+        
+        return isValidBST2(p.left, min, p.val) && isValidBST2(p.right, p.val, max);
+    }
+    
+    
 }

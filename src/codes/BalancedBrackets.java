@@ -87,11 +87,12 @@ public class BalancedBrackets {
      * if (ch == '{' || ch == '[' || ch == '(') {
      * 	    deque.addFirst(ch);
      *        }
-     *    First, we check whether the LinkedList is empty or not. An empty list means that the closing bracket is unmatched. T
-     *    herefore, the input string is unbalanced. So we return false.
+     *    First, we check whether the LinkedList is empty or not. An empty list means that the closing bracket is unmatched.
+     *    Therefore, the input string is unbalanced. So we return false.
      *
      * However, if the LinkedList is not empty, then we peek on its last-in character using the peekFirst method.
-     * If it can be paired with the closing bracket, then we remove this top-most character from the list using the removeFirst method and move on to the next iteration of the loop:
+     * If it can be paired with the closing bracket, then we remove this top-most character from the list using the
+     * removeFirst method and move on to the next iteration of the loop:
      * @param s
      * @return
      */

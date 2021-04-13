@@ -29,15 +29,19 @@ public class Palindrome {
 		return isPalindrome;
 	}
 
-	static boolean isPalindrome(String s){
-		if(s.isEmpty() || s.length()==1)return true;
+	static boolean isPalindrome(String s) {
+		if(s.isEmpty() || s.length() == 1) return true;
 
-		int l=0,r=s.length();
-		if(s.charAt(l) !=s.charAt(r-1))return false;
+		int l = 0,r = s.length();
+		if(s.charAt(l) != s.charAt(r-1)) return false;
 		else {
 			System.out.println(s.substring(l,r));
 			return isPalindrome(s.substring(++l,--r));
 		}
+	}
+	static String reverse(String s) {
+		if(s == null || s.isEmpty()) return s;
+		return s.charAt(s.length() - 1) + reverse(s.substring(0, s.length() -1));
 	}
 	//Longest Palindrome
 	//Start from the middle of a String
