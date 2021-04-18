@@ -42,6 +42,25 @@ public class BinaryTree {
         third.right = first;
     
         System.out.println("The height of the binary tree is " + height(root2));
+    
+        Node<Integer> tree = new Node<>(2);
+        tree.left = new Node(7);
+        tree.right = new Node(5);
+        tree.left.right = new Node(6);
+        tree.left.right.left = new Node(1);
+        tree.left.right.right = new Node(11);
+        tree.right.right = new Node(9);
+        tree.right.right.left = new Node(4);
+        System.out.println("findMax: "+bt.findMax(tree));
+        
+        Node tree2 = new Node(1);
+        tree2.left = new Node(2);
+        tree2.right = new Node(3);
+        tree2.left.left = new Node(4);
+        tree2.left.right = new Node(5);
+        tree2.right.left = new Node(8);
+    
+        bt.printKDistant(tree2, 2);
         
         System.out.println(countLeaves(root));
         System.out.println(countLeavesIteratively(root));
@@ -289,6 +308,128 @@ public class BinaryTree {
         return 1 + Math.max(height(node.left), height(node.right));
     }
     
+    /**
+     * Find minumum depth of a binary tree
+     * Given a binary tree, find its minimum depth. The depth is the total number of nodes along the shortest path
+     * from the root node down to the nearest lead node.
+     *
+     * The idea is to traverse the tree in a bottom up manner using post order traversal and calculate the minimum depth
+     * of left and right subtree for each encountered node. The minimum depth of the subtree rooted at any node is one more
+     * than the minumum depth of its left and right subtree. if either left or right subtree does not exist for a node, consider
+     * the minumym depth returned by the other subtree.
+     */
+    int findMinDepth(Node root) {
+        //base case
+        if (root == null) {
+            return 0;
+        }
+        
+        //find the minimum depth of the left subtree
+        int l = findMinDepth(root.left);
+        
+        //find the minimum depth of the right subtree
+        int r = findMinDepth(root.right);
+        
+        //if the left child does not exist, consider the depth returned by the right subtree
+        if (root.left == null)
+            return 1 + r;
+        
+        // if the right child does not exist, consider the depth returned by the left subtree
+        if (root.right == null)
+            return 1 + l;
+        
+        //otherwise, choose the minimum depth returned by the left and right subtree
+        return Math.min(l, r) + 1;
+    }
+    
+    /**
+     * The idea is to traverse the tree using BFS instead of DFS. Then the procedure can be terminated upon
+     * encountering the first leaf node closest to the root.
+     *
+     * The standard algorithm for performing BFS on trees is level order traversal.
+     */
+    int findMinDepth2(Node root) {
+        // base case
+        /*if (root == null) {
+            return 0;
+        }
+    
+        // create an empty queue and push the root node with a depth of 1
+        Queue<QueueNode> q = new ArrayDeque<>();
+        q.add(new QueueNode(root, 1));
+    
+        // run till queue is empty`
+        while (!q.isEmpty())
+        {
+            // dequeue front node
+            Node node = q.peek().node;
+            int depth = q.peek().depth;
+        
+            q.poll();
+        
+            // if the popped node is a leaf node, return its depth
+            if (isLeaf(node)) {
+                return depth;
+            }
+        
+            // enqueue left child of the popped node with +1 depth
+            if (node.left != null) {
+                q.add(new QueueNode(node.left, depth + 1));
+            }
+        
+            // enqueue right child of the popped node with +1 depth
+            if (node.right != null) {
+                q.add(new QueueNode(node.right, depth + 1));
+            }
+        }*/
+        return 0;
+    }
+    boolean isBalancedTree(Node root) {
+        //base case
+        if (root == null)
+            return true;
+        
+        int l = height2(root.left);
+        int r = height2(root.right);
+        
+        if (Math.abs(l -r ) <= 1 && isBalancedTree(root.left) && isBalancedTree(root.right)) {
+            return true;
+        }
+        return false;
+    }
+    
+    int height2(Node node) {
+        if (node == null)
+            return 0;
+        
+        return 1 + Math.max(height2(node.left), height2(node.right));
+    }
+    
+    int findMax(Node<Integer> node) {
+        if (node == null) {
+            return Integer.MIN_VALUE;
+        }
+        
+        int res = node.data;
+        int lres = findMax(node.left);
+        int rres = findMax(node.right);
+        if (lres > res)
+            res = lres;
+        if (rres > res)
+            res = rres;
+        return res;
+    }
+    void printKDistant(Node node, int k) {
+        if (node == null) return;
+        
+        if (k == 0) {
+            System.out.print(node.data+" ");
+            return;
+        } else {
+            printKDistant(node.left, k - 1);
+            printKDistant(node.right, k - 1);
+        }
+    }
 }
 
 /**
@@ -301,4 +442,5 @@ public class BinaryTree {
  * https://medium.com/@zhongjie.ruan/leetcode-76-minimum-window-substring-b4798b5827fd
  * https://leetcode.com/problems/minimum-window-substring/solution/
  * https://www.programcreek.com/2014/05/leetcode-minimum-window-substring-java/
+ * https://www.techiedelight.com/Category/Trees/Binary-Tree/page/4/
  */

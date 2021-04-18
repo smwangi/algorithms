@@ -1,6 +1,4 @@
 
-package codes;
-
 import java.util.ArrayDeque;
 import java.util.Deque;
 
@@ -97,6 +95,5 @@ public class RemoveKDigits {
         return sb.substring(i);
 
     }
-
 
 }

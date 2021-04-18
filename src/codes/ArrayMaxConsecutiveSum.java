@@ -8,7 +8,7 @@ public class ArrayMaxConsecutiveSum {
 
         for(int i = 1; i < arr.length; i++){
             currentSum = Math.max(arr[i] + currentSum, arr[i]);
-            maxSum = Math.max(currentSum,maxSum);
+            maxSum = Math.max(currentSum, maxSum);
         }
 
         System.out.println(maxSum);

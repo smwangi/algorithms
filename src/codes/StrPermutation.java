@@ -15,6 +15,7 @@ public class StrPermutation {
         permute(s,0,s.length()-1);
         permutation("", s);
         permutations(s.toCharArray(), 0);
+        permute2("", s);
     }
 
     //Recursive
@@ -185,6 +186,16 @@ public class StrPermutation {
             for (int i = 0; i < word.length(); i++) {
                 permutation(perm + word.charAt(i), word.substring(0, i) + word.substring(i + 1));
             }
+        }
+    }
+    
+    static void permute2(String prefix, String remaining) {
+        if (remaining.length() == 0) {
+            System.out.println("- "+prefix);
+            return;
+        }
+        for (int i = 0; i < remaining.length(); i++) {
+            permute2(prefix + remaining.charAt(i), remaining.substring(0, i) + remaining.substring(i+1));
         }
     }
 }

@@ -19,7 +19,7 @@ import java.util.List;
 public class Anagram {
 
     public static void main(String[] args) throws IOException {
-Runtime.getRuntime().exec("cmd /c start https://google.com");
+
         isAnagram("abcd", "dcab");
 
         String s = "cbaebabacd",p="abc";

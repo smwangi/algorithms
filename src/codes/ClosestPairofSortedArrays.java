@@ -1,4 +1,3 @@
-import java.util.Map;
 import java.util.PriorityQueue;
 
 /**
@@ -56,7 +55,7 @@ public class ClosestPairofSortedArrays {
 
         for (int i = 0; i < arr1.length; i++){
             for (int j = 0; j < arr2.length; j++){
-                int t = Math.abs((arr1[i]+arr2[j])-x);
+                int t = Math.abs((arr1[i] + arr2[j]) - x);
 
                 if(t < min){
                     min = t;

@@ -66,6 +66,7 @@ public class InvertBinaryTree {
             root.left = root.right;
             root.right = temp;
         }
+        
         return root;
     }
     //Using Stack

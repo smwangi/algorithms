@@ -1,4 +1,3 @@
-package codes;
 
 /**
  * Find maximum sum of subsequence with no adjustment elements

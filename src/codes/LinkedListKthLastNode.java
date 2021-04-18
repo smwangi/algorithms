@@ -40,6 +40,7 @@ public class LinkedListKthLastNode {
         for (int i = 0; i < howFarToGo;i++){
             currentNode = currentNode.next;
         }
+        System.out.println(currentNode.value);
         return currentNode;
     }
 }

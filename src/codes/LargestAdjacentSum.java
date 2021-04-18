@@ -1,4 +1,3 @@
-package codes;
 
 /**
  * A function named largestAdjacentSum that iterates through an array computing the sum of adjacent elements

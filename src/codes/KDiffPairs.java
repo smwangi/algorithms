@@ -1,5 +1,3 @@
-package codes;
-
 import java.util.*;
 
 public class KDiffPairs {

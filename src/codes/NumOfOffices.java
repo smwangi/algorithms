@@ -1,6 +1,4 @@
 
-package codes;
-
 public class NumOfOffices {
     private static int column, row;
     public static void main(String[] args) {

@@ -1,4 +1,3 @@
-package codes;
 
 public class PowerOfThree {
 

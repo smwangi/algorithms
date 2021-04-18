@@ -1,8 +1,5 @@
-package codes;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Sliding Window Algorithm (Track the maximum of each subarray of size k)
@@ -35,11 +32,14 @@ public class MaxSubArray {
             int[] a = new int[3];
             for(int j = 0; j < k; j++){
                 a[j] = nums[i+j];
-                if(nums[i+j] > max)
+                if(nums[i+j] > max){
                     max = nums[i+j];
+                    System.out.print(max+" ");
+                }
+                
             }
-            System.out.println(Arrays.toString(a));
-            System.out.println(max+" ");
+           // System.out.println(Arrays.toString(a));
+            //System.out.println(max+" ");
         }
     }
 }

@@ -19,6 +19,8 @@
  * Since the list has two middle nodes with values 3 and 4, we return the second one.
  */
 public class LinkedLists {
+    static public Node head;
+    
     public static void main(String[] args) {
     
         Node node = new Node(1);
@@ -28,6 +30,23 @@ public class LinkedLists {
         node.next.next.next.next = new Node(5);
         Node middle = middleElement(node);
         System.out.println(middle.data);
+    
+        /* Start with the empty list */
+        ListNode head = new LinkedLists().new ListNode(1);
+        head.next = new LinkedLists().new ListNode(2);
+        head.next.next = new LinkedLists().new ListNode(3);
+        head.next.next.next = new LinkedLists().new ListNode(4);
+        head.next.next.next.next = new LinkedLists().new ListNode(5);
+        head.next.next.next.next.next = new LinkedLists().new ListNode(6);
+        head.next.next.next.next.next.next =
+                new LinkedLists().new ListNode(7);
+        head.next.next.next.next.next.next.next =
+                new LinkedLists().new ListNode(8);
+    
+        int k = 3;
+        head = deleteKthNode(head, k);
+    
+        displayList(head);
     }
     
     /**
@@ -135,11 +154,15 @@ public class LinkedLists {
      * @return
      */
     static Node removeElementsIterative(Node node, int val) {
-        while (node != null) head = head.next;
+        while (node != null)
+            head = head.next;
+        
         Node current = head;
         while (current != null && current.next != null) {
-            if(current.next.data == val) current.next = current.next.next;
-            else current = current.next;
+            if(current.next.data == val)
+                current.next = current.next.next;
+            else
+                current = current.next;
         }
         return node;
     }
@@ -150,7 +173,7 @@ public class LinkedLists {
         return head.data == val ? head.next : head;
     }
     
-    static public Node head;
+    
     static public class Node {
         int data;
         Node next;
@@ -160,6 +183,99 @@ public class LinkedLists {
         }
     }
     
+    /**
+     * Remove every k-th node of the linked list
+     *
+     * Examples :
+     *
+     * Input : 1->2->3->4->5->6->7->8
+     *         k = 3
+     * Output : 1->2->4->5->7->8
+     * As 3 is the k-th node after its deletion list
+     * would be 1->2->4->5->6->7->8
+     * And now 4 is the starting node then from it, 6
+     * would be the k-th node. So no other kth node
+     * could be there.So, final list is:
+     * 1->2->4->5->7->8.
+     *
+     * Input: 1->2->3->4->5->6
+     *        k = 1
+     * Output: Empty list
+     * All nodes need to be deleted
+     *
+     * The idea is traverse the list from beginning and keep track of nodes visited after last deletion.
+     * Whenever count becomes k, delete current node and reset count as 0.
+     *
+     * (1) Traverse list and do following
+     *    (a) Count node before deletion.
+     *    (b) If (count == k) that means current
+     *         node is to be deleted.
+     *       (i)  Delete current node i.e. do
+     *
+     *           //  assign address of next node of
+     *           // current node to the previous node
+     *           // of the current node.
+     *           prev->next = ptr->next i.e.
+     *
+     *        (ii) Reset count as 0, i.e., do count = 0.
+     *    (c) Update prev node if count != 0 and if
+     *        count is 0 that means that node is a
+     *        starting point.
+     *    (d) Update ptr and continue until all
+     *        k-th node gets deleted.
+     */
+    
+    static ListNode deleteKthNode(ListNode head, int k) {
+        // if linked list is empty
+        if (head == null)
+            return null;
+        
+        if (k == 1) {
+            head = freeList(head);
+            return null;
+        }
+        //Initialize ptr and prev before traversing
+        ListNode ptr = head, prev = null;
+        
+        //Traverse the list and delete every k-th node
+        int count = 0;
+        while (ptr != null) {
+            //Increment Node count
+            // check if count is equal to k
+            // if yes, then delete current node
+            if (k == count) {
+                //put the next of current Node in the next of previous node
+                prev.next = ptr.next;
+                //set count  = 0 to reach further k-th node
+                count = 0;
+            }
+            //update prev if count is not 0
+            if (count != 0 )
+                prev = ptr;
+            ptr = prev.next;
+        }
+        
+        return head;
+    }
+    
+    static ListNode freeList(ListNode node) {
+        while (node != null) {
+            ListNode next = node.next;
+            node = next;
+        }
+        return node;
+    }
+    
+    /* Function to print linked list */
+    static void displayList(ListNode head)
+    {
+        ListNode temp = head;
+        while (temp != null)
+        {
+            System.out.print(temp.value + " ");
+            temp = temp.next;
+        }
+    }
     /**
      * Note: Try to solve this task in O(n) time using O(1) additional space,
      * where n is the number of elements in the list, since this is what you'll be asked to do during an interview.

@@ -51,6 +51,15 @@ public class MSInterviewPrep {
         Integer[] maxSum = { 4, 6, 2, 7, 9, 8 };
         arrayQuestions.findMaximum(maxSum);
         
+        String longestSubStr = "geeksforgeeks";
+        arrayQuestions.lenLongestSubStr(longestSubStr);
+        int[] minSubArrLen = {2,3,1,2,4,3};
+        System.out.println("Min Sub Arr Len: "+arrayQuestions.minSubArrayLen(7, minSubArrLen));
+        int[] squared = {1,2,3,4};
+        arrayQuestions.productOfArrayExceptSelf(squared);
+        int[] searchRange = {5,7,7,8,8,10};
+        arrayQuestions.searchRange(searchRange, 8);
+        
     }
 }
 class ArrayQuestions {
@@ -285,7 +294,8 @@ class ArrayQuestions {
                 nums[pos++] = nums[i];
             }
         }
-        while (pos < n) nums[pos++] =0;
+        while (pos < n)
+            nums[pos++] = 0;
         System.out.println("Moved: "+Arrays.toString(nums));
     }
     
@@ -326,8 +336,10 @@ class ArrayQuestions {
     int findDups2(int[] nums) {
         Set<Integer> set = new HashSet<>();
         for (int i = 0; i < nums.length; i++) {
-            if(set.contains(nums[i])) return nums[i];
-            else set.add(nums[i]);
+            if(set.contains(nums[i]))
+                return nums[i];
+            else
+                set.add(nums[i]);
         }
         return -1;
     }
@@ -990,4 +1002,132 @@ class ArrayQuestions {
         return false;
     }
     
+    int lenLongestSubStr(String s) {
+        if (s == null || s.isEmpty())
+            return 0;
+        
+        char[] chars = s.toCharArray();
+        int l = 0;
+        int r = 0;
+        int max = 0;
+        
+        Set<Character> set = new HashSet<>();
+        
+        while (r < s.length()) {
+            
+            if (!set.contains(s.charAt(r))) {
+                set.add(s.charAt(r++));
+                max = Math.max(max, set.size());
+            } else if (set.contains(s.charAt(r))) {
+                set.remove(s.charAt(l++));
+            }
+        }
+        System.out.println("Len of Longest substr: "+max);
+        return max;
+    }
+    
+    int minSubArrayLen(int s, int[] nums) {
+        int result = Integer.MAX_VALUE;
+        int left = 0;
+        int value_sum = 0;
+        
+        for (int i = 0; i < nums.length; i++) {
+            value_sum += nums[i];
+            
+            while (value_sum > s) {
+                result = Math.min(result, i + 1 - left);
+                value_sum -= nums[left];
+                left++;
+            }
+        }
+        return result != Integer.MAX_VALUE ? result : 0;
+    }
+    
+    int[] findLongestSubArraySum(int target, int[] nums) {
+        int[] result = new int[] {-1};
+        int left = 0;
+        int value_sum = 0;
+        int right = 0;
+        
+        while (right < nums.length) {
+            value_sum += nums[right];
+            
+            while (left < right && value_sum > target) {
+                value_sum -= nums[left++];
+            }
+            if (value_sum == target && (result.length == 1 || result[1] - result[0] < right - left)) {
+                result = new int[]{left + 1, right + 1};
+            }
+            right++;
+        }
+        return result;
+    }
+    
+    int[] productOfArrayExceptSelf(int[] nums) {
+        int N = nums.length;
+        int[] output_arr = new int[N];
+        output_arr[0] = 1;
+        
+        for (int i = 1; i < N; i++) {
+            output_arr[i]  = nums[i - 1] * output_arr[i - 1];
+        }
+        
+        int R = 1;
+        for (int i = N - 1; i >= 0; i--) {
+            output_arr[i] = output_arr[i] * R;
+            R = R * nums[i];
+        }
+        System.out.println("Squared array: "+Arrays.toString(output_arr));
+        return output_arr;
+    }
+    
+    int[] searchRange(int[] nums, int target) {
+        int[] result = new int[2];
+        result[0] = findStartingIndex(nums, target);
+        result[1] = findEndingIndex(nums, target);
+        System.out.println("Search Range: "+Arrays.toString(result));
+        return result;
+    }
+    
+    int findStartingIndex(int[] nums, int target) {
+        int index = -1;
+        int start = 0;
+        int end = nums.length - 1;
+        while (start < end) {
+            int midpoint = start + (end - start)/2;
+            if (nums[midpoint] > target) {
+                end = midpoint -1;
+            } else {
+                start = midpoint + 1;
+            }
+            if (nums[midpoint] == target)
+                index = midpoint;
+        }
+        return index;
+    }
+    
+    int findEndingIndex(int[] nums, int target) {
+        int index = -1;
+        int start = 0;
+        int end = nums.length - 1;
+        
+        while (start < end) {
+            int midpoint = start + (end-start)/2;
+            if(nums[midpoint] <= target) {
+                start = midpoint + 1;
+            } else {
+                end = midpoint - 1;
+            }
+            
+            if(nums[midpoint] == target)
+                index = midpoint;
+        }
+        return index;
+    }
 }
+/**
+ * https://www.techiedelight.com/Tags/Sliding-Window/
+ * https://www.techiedelight.com/Tags/Memoization/
+ *
+ * https://www.techiedelight.com/find-closest-pair-two-sorted-arrays/
+ */

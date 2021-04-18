@@ -1,6 +1,4 @@
 
-package codes;
-
 import java.util.HashSet;
 
 public class ShortestDistanceBtnNumbersInArray {

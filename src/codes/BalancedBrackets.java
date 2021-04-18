@@ -1,7 +1,3 @@
-package codes;
-
-import java.util.Deque;
-import java.util.LinkedList;
 import java.util.Stack;
 
 /**
@@ -72,8 +68,9 @@ public class BalancedBrackets {
 
     public static void main(String[] args) {
         String brackets1 = "{[(])}";
+        String brackets3 = "{[()]}";
         String brackets2 = "}][}}(}][))]";
-       System.out.println(isBalanced2(brackets2));
+       System.out.println(isBalanced2(brackets3));
     }
 
     /**
@@ -104,6 +101,7 @@ public class BalancedBrackets {
                 upperElement = deque.peek();
             }
             deque.push(s.charAt(i));
+            System.out.print(s.charAt(i)+ " ");
             if (!deque.isEmpty() && deque.size() > 1) {
                 if (
                         (upperElement == '[' && deque.peek() == ']') ||

@@ -77,7 +77,8 @@ public class KthSmallestElementBST {
                 root = root.left;
             }
             root = stack.removeLast();
-            if(--k == 0) return root.val;
+            if(--k == 0)
+                return root.val;
             root = root.right;
         }
     }
