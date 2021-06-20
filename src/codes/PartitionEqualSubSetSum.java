@@ -131,26 +131,29 @@ public class PartitionEqualSubSetSum {
     public boolean canPartition2(int[] nums) {
         int totalSum = 0;
 
-        for(int num: nums) totalSum +=num;
+        for(int num: nums)
+            totalSum +=num;
 
         //if total num is odd, it cannot be partitioned
-        if(totalSum % 2 != 0) return false;
-        int subSetSum = totalSum/2;
+        if(totalSum % 2 != 0)
+            return false;
+        int subSetSum = totalSum / 2;
         int n = nums.length;
 
-        Boolean[][] memo = new Boolean[n+1][subSetSum+1];
+        Boolean[][] memo = new Boolean[n + 1][subSetSum + 1];
         return dfs2(nums, n-1,subSetSum,memo);
     }
 
     private boolean dfs2(int[] nums, int n, int subSetSum, Boolean[][]memo){
         //Base cases
-        if(subSetSum == 0)return true;
-        if(n == 0 || subSetSum < 0){
+        if (subSetSum == 0)
+            return true;
+        if (n == 0 || subSetSum < 0) {
             return false;
         }
 
         //Check if subSetSum for a given n is already computed  and stored in memo
-        if (memo[n][subSetSum] != null){
+        if (memo[n][subSetSum] != null) {
             return memo[n][subSetSum];
         }
 

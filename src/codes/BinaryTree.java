@@ -1,8 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class BinaryTree {
+    int max_width;
+    HashMap<Integer, Integer> leftmost_positions;
     public static void main(String[] args) {
         BinaryTree bt = new BinaryTree();
         Node<String> root = new Node<>("a");
@@ -67,6 +67,17 @@ public class BinaryTree {
         printLeafNodes(root);
         printLeafNodesIteratively(root);
         preorderIterative(root);
+    
+        Node root3 = new Node(10);
+        root3.left = new Node(2);
+        root3.right = new Node(3);
+        root3.left.left = new Node(7);
+        root3.left.right = new Node(8);
+        root3.right.right = new Node(15);
+        root3.right.left = new Node(12);
+        root3.right.right.left = new Node(14);
+    
+        rightViewUtil(root3);
     }
     
     /**
@@ -263,6 +274,24 @@ public class BinaryTree {
         return list;
     }
     
+    public static ArrayList<Integer>preorder2(Node<Integer> root) {
+        ArrayList<Integer> res = new ArrayList<>();
+        Stack<Node> S = new Stack<>();
+        if (root == null) return res;
+        Node curr = root;
+        S.push(curr);
+        
+        while (S.size() > 0) {
+            curr = S.pop();
+            res.add((int)curr.data);
+            if (curr.right != null)
+                S.push(curr.right);
+            if (curr.left != null)
+                S.push(curr.left);
+        }
+        return res;
+    }
+    
     public static ArrayList<Integer> postOrderIterativeTraversal(Node<Integer> root) {
         ArrayList<Integer> list = new ArrayList<>();
         if (root == null) {
@@ -430,6 +459,254 @@ public class BinaryTree {
             printKDistant(node.right, k - 1);
         }
     }
+    
+    int widthOfBinaryTree(Node node) {
+        max_width = 0;
+        leftmost_positions = new HashMap<>();
+        get_width(node, 0, 0);
+        return max_width;
+    }
+    void get_width(Node node, int depth, int position) {
+        if (node == null) return;
+        leftmost_positions.computeIfAbsent(depth, x -> position);
+        max_width = Math.max(max_width, position-leftmost_positions.get(depth) +1);
+        get_width(node.left, depth+1, position*2);
+        get_width(node.right, depth+1, position*2+1);
+    }
+    
+    /**
+     * Print Right View of a Binary Tree
+     * Given a Binary Tree, print Right view of it. Right view of a Binary Tree is set of nodes visible when tree is visited from Right side.
+     *
+     * Right view of following tree is 1 3 7 8
+     *
+     *           1
+     *        /     \
+     *      2        3
+     *    /   \     /  \
+     *   4     5   6    7
+     *                   \
+     *                    8
+     *
+     *  The Right view contains all nodes that are last nodes in their levels.
+     *  A simple solution is to do level order traversal and print the last node in every level.
+     *
+     * The problem can also be solved using simple recursive traversal. We can keep track of level of a node by passing a parameter to all recursive calls.
+     * The idea is to keep track of maximum level also. And traverse the tree in a manner that right subtree is visited before left subtree.
+     * Whenever we see a node whose level is more than maximum level so far, we print the node because this is the last node in its level (Note that we traverse the right subtree before left subtree).
+     */
+    static void rightViewUtil(Node root) {
+        if (root == null)
+            return;
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            // number of nodes at current level
+            int n = queue.size();
+            // Traverse all nodes of current level
+            for (int i = 1; i <= n; i++) {
+                Node temp = queue.poll();
+                // print the right most element at the level
+                if (i == n)
+                    System.out.print(temp.data+" ");
+                // Add left node to queue
+                if (temp.left != null)
+                    queue.add(temp.left);
+                // Add right node to queue
+                if (temp.right != null)
+                    queue.add(temp.right);
+            }
+        }
+    }
+    /**
+     * Print Nodes in Top View of Binary Tree
+     * Top view of a binary tree is the set of nodes visible when the tree is viewed from the top.
+     * Given a binary tree, print the top view of it. The output nodes can be printed in any order.
+     *
+     * A node x is there in output if x is the topmost node at its horizontal distance.
+     * Horizontal distance of left child of a node x is equal to horizontal distance of x minus 1, and that of right child is horizontal distance of x plus 1.
+     *
+     *        1
+     *     /     \
+     *    2       3
+     *   /  \    / \
+     *  4    5  6   7
+     * Top view of the above binary tree is
+     * 4 2 1 3 7
+     *
+     *         1
+     *       /   \
+     *     2       3
+     *       \
+     *         4
+     *           \
+     *             5
+     *              \
+     *                6
+     * Top view of the above binary tree is
+     * 2 1 3 6
+     *
+     * The idea is to do something similar to vertical Order Traversal.
+     * Like vertical Order Traversal, we need to put nodes of same horizontal distance together.
+     * We do a level order traversal so that the topmost node at a horizontal node is visited before any other node of same horizontal distance below it.
+     * Hashing is used to check if a node at given horizontal distance is seen or not.
+     */
+    static void topView(Node root) {
+    
+    }
+    /**
+     * Approach 1
+     * Lowest Common Ancestor
+     * Let T be a rooted tree. The lowest common ancestor between two nodes n1 and n2 is defined as the lowest node in T that has both n1 and n2 as descendants (where we allow a node to be a descendant of itself).
+     * The LCA of n1 and n2 in T is the shared ancestor of n1 and n2 that is located farthest from the root.
+     * Computation of lowest common ancestors may be useful, for instance, as part of a procedure for determining the distance between pairs of nodes in a tree:
+     * the distance from n1 to n2 can be computed as the distance from the root to n1, plus the distance from the root to n2, minus twice the distance from the root to their lowest common ancestor.
+     *
+     * Approach 1: Recursive Approach
+     * Intuition
+     *
+     * The approach is pretty intuitive. Traverse the tree in a depth first manner. The moment you encounter either of the nodes p or q, return some boolean flag. The flag helps to determine if we found the required nodes in any of the paths. The least common ancestor would then be the node for which both the subtree recursions return a True flag. It can also be the node which itself is one of p or q and for which one of the subtree recursions returns a True flag.
+     *
+     * Let us look at the formal algorithm based on this idea.
+     *
+     * Algorithm
+     *
+     * Start traversing the tree from the root node.
+     * If the current node itself is one of p or q, we would mark a variable mid as True and continue the search for the other node in the left and right branches.
+     * If either of the left or the right branch returns True, this means one of the two nodes was found below.
+     * If at any point in the traversal, any two of the three flags left, right or mid become True, this means we have found the lowest common ancestor for the nodes p and q.
+     *
+     * 1 --> 2 --> 4 --> 8
+     * BACKTRACK 8 --> 4
+     * 4 --> 9 (ONE NODE FOUND, return True)
+     * BACKTRACK 9 --> 4 --> 2
+     * 2 --> 5 --> 10
+     * BACKTRACK 10 --> 5
+     * 5 --> 11 (ANOTHER NODE FOUND, return True)
+     * BACKTRACK 11 --> 5 --> 2
+     *
+     * 2 is the node where we have left = True and right = True and hence it is the lowest common ancestor.
+     */
+    private TreeNode ans;
+    private boolean recurseTree(TreeNode currentNode, TreeNode p, TreeNode q) {
+    
+        // If reached the end of a branch, return false.
+        if (currentNode == null) {
+            return false;
+        }
+    
+        // Left Recursion. If left recursion returns true, set left = 1 else 0
+        int left = this.recurseTree(currentNode.left, p, q) ? 1 : 0;
+    
+        // Right Recursion
+        int right = this.recurseTree(currentNode.right, p, q) ? 1 : 0;
+    
+        // If the current node is one of p or q
+        int mid = (currentNode == p || currentNode == q) ? 1 : 0;
+    
+    
+        // If any two of the flags left, right or mid become True
+        if (mid + left + right >= 2) {
+            this.ans = currentNode;
+        }
+    
+        // Return true if any one of the three bool values is True.
+        return (mid + left + right > 0);
+    }
+    
+    public TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q) {
+        // Traverse the tree
+        this.recurseTree(root, p, q);
+        return this.ans;
+    }
+    /**
+     * Approach 2
+     * Iterative using parent pointers
+     * Intuition
+     *
+     * If we have parent pointers for each node we can traverse back from p and q to get their ancestors. The first common node we get during this traversal would be the LCA node. We can save the parent pointers in a dictionary as we traverse the tree.
+     *
+     * Algorithm
+     *
+     * Start from the root node and traverse the tree.
+     * Until we find p and q both, keep storing the parent pointers in a dictionary.
+     * Once we have found both p and q, we get all the ancestors for p using the parent dictionary and add to a set called ancestors.
+     * Similarly, we traverse through ancestors for node q. If the ancestor is present in the ancestors set for p, this means this is the first ancestor common between p and q (while traversing upwards) and hence this is the LCA node.
+     *
+     */
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+    
+        // Stack for tree traversal
+        Deque<TreeNode> stack = new ArrayDeque<>();
+    
+        // HashMap for parent pointers
+        Map<TreeNode, TreeNode> parent = new HashMap<>();
+    
+        parent.put(root, null);
+        stack.push(root);
+    
+        // Iterate until we find both the nodes p and q
+        while (!parent.containsKey(p) || !parent.containsKey(q)) {
+        
+            TreeNode node = stack.pop();
+        
+            // While traversing the tree, keep saving the parent pointers.
+            if (node.left != null) {
+                parent.put(node.left, node);
+                stack.push(node.left);
+            }
+            if (node.right != null) {
+                parent.put(node.right, node);
+                stack.push(node.right);
+            }
+        }
+    
+        // Ancestors set() for node p.
+        Set<TreeNode> ancestors = new HashSet<>();
+    
+        // Process all ancestors for node p using parent pointers.
+        while (p != null) {
+            ancestors.add(p);
+            p = parent.get(p);
+        }
+    
+        // The first ancestor of q which appears in
+        // p's ancestor set() is their lowest common ancestor.
+        while (!ancestors.contains(q))
+            q = parent.get(q);
+        return q;
+    }
+    
+    /**
+     * Given the root of a binary tree, imagine yourself standing on the right side of it,
+     * return the values of the nodes you can see ordered from top to bottom.
+     * Input: root = [1,2,3,null,5,null,4]
+     * Output: [1,3,4]
+     * Example 2:
+     *
+     * Input: root = [1,null,3]
+     * Output: [1,3]
+     * Example 3:
+     *
+     * Input: root = []
+     * Output: []
+     * @param root
+     * @return
+     */
+    static List<Integer> rightSideView(Node root) {
+        List<Integer> result = new ArrayList<>();
+        rightView(root, result, 0);
+        return result;
+    }
+    static void rightView(Node current, List<Integer> result, int curDepth) {
+        if (current == null)
+            return;
+        if (curDepth == result.size())
+            result.add((Integer) current.data);
+        rightView(current.right, result, curDepth + 1);
+        rightView(current.left, result, curDepth + 1);
+    }
+    
 }
 
 /**

@@ -5,7 +5,9 @@ import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributeView;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Anagram
@@ -15,6 +17,9 @@ import java.util.List;
  * Do we need two counter tables for comparison? Actually no, because we could increment
  * the counter for each letter in s and decrement
  * the counter for each letter in t, then check if the counter reaches back to zero.
+ *
+ * A simple solution would to sort given string. If the strings become equal after sorting, they are anagrams. The time
+ * complexity of this solution is O(n.log(n)), where n is the length of the input string
  */
 public class Anagram {
 
@@ -30,8 +35,16 @@ public class Anagram {
         System.out.println(fileAttributes.creationTime());
         System.out.println(Files.isExecutable(path));
         System.out.println(System.getProperty("user.home"));
-        findAnagrams(s,p).forEach(System.out::println);
-
+        //findAnagrams(s,p).forEach(System.out::println);
+        String X = "tommarvoloriddle";        // Tom Marvolo Riddle
+        String Y = "iamlordvoldemort";        // I am Lord Voldemort
+    
+        if (isAnagram4(X, Y)) {
+            System.out.print("Anagram");
+        }
+        else {
+            System.out.print("Not an Anagram");
+        }
 
     }
 
@@ -77,9 +90,11 @@ public class Anagram {
         int count = p.length();
 
         while (right < s.length()){
-            if(char_counts[s.charAt(right++)]-- >= 1)count--;
-            if(count == 0) result.add(left);
-            if(right-left == p.length() && char_counts[s.charAt(left++)]++ >= 0)count++;
+            if (char_counts[s.charAt(right++)]-- >= 1)
+                count--;
+            if (count == 0) result.add(left);
+            if (right-left == p.length() && char_counts[s.charAt(left++)]++ >= 0)
+                count++;
         }
 
         return result;
@@ -113,5 +128,67 @@ public class Anagram {
             }
         }
         return sb.length() == 0 ? true : false;
+    }
+    /**
+     * We can also solve this problem in O(n) time. The idea is to maintain the frequency of each character of the first
+     * string in a map or a count array. Then for each character of the second string, decrement its frequency and return
+     * false if the frequency becomes negative of the character is not present on the map
+     */
+    static boolean isAnagram4(String x, String y) {
+        if (x.length() != y.length())
+            return false;
+        // Create an empty map
+        Map<Character, Integer> freq = new HashMap<>();
+        // Maintain a count of each character of `X` on the map
+        for (char c : x.toCharArray())
+            freq.put(c, freq.getOrDefault(c, 0) + 1);
+        // do for each character `y` of `Y`
+        for (char c : y.toCharArray()) {
+            // if `y` is not found in the map, i.e., either `y` is not present
+            // in string `X` or has more occurrences in string `Y`
+            if (!freq.containsKey(c))
+                return false;
+            // Decrease freq
+            freq.put(c, freq.get(c) - 1);
+            // if frequency becomes 0, erase it from the map
+            if (freq.get(c) == 0)
+                freq.remove(c);
+        }
+        return freq.isEmpty();
+    }
+    
+    /**
+     * Create two maps and store the frequency of each character of the first and second string in them.
+     * Then check if both maps are equal or not. If both are found to be equal, then both strings are anagrams.
+     * @param X
+     * @param Y
+     * @return
+     */
+    // Function to check if `X` and `Y` are anagrams or not
+    public static boolean isAnagram5(String X, String Y)
+    {
+        // if X's length is not the same as Y's, they can't be an anagram
+        if (X.length() != Y.length()) {
+            return false;
+        }
+        
+        // create an empty map
+        Map<Character, Integer> freqX = new HashMap<>();
+        
+        // maintain a count of each character of `X` on the map
+        for (char c: X.toCharArray()) {
+            freqX.put(c, freqX.getOrDefault(c, 0) + 1);
+        }
+        
+        // create a second map
+        Map<Character, Integer> freqY = new HashMap<>();
+        
+        // maintain a count of each character of `Y` on the map
+        for (char c: Y.toCharArray()) {
+            freqY.put(c, freqY.getOrDefault(c, 0) + 1);
+        }
+        
+        // return true if both maps have the same content
+        return freqX.equals(freqY);
     }
 } 

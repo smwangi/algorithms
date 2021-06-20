@@ -1,7 +1,7 @@
 public class ReverseLinkedList {
     static public Node head;
     public static void main(String[] args) {
-        ReverseLinkedList list = new ReverseLinkedList();
+        /*ReverseLinkedList list = new ReverseLinkedList();
         list.head = new Node(85);
         list.head.next = new Node(15);
         list.head.next.next = new Node(4);
@@ -14,7 +14,15 @@ public class ReverseLinkedList {
         list.printList(head);
         
         list.reverseList(head);
-        list.reverseRecursively(head);
+        list.reverseRecursively(head);*/
+    
+        ReverseLinkedList reverse = new ReverseLinkedList();
+        Node node = new Node(1);
+        node.next = new Node(2);
+        node.next.next = new Node(3);
+        node.next.next.next = new Node(4);
+        node.next.next.next.next = new Node(5);
+        reverse.reverseList(node);
     }
     static class Node {
         int data;
@@ -24,29 +32,42 @@ public class ReverseLinkedList {
             next = null;
         }
     }
-        //Reverse
-        public Node reverse(Node node) {
-            Node prev = null;
-            Node current = node;
-            Node next = null;
-            
-            while (current != null) {
-                next = current.next;
-                current.next = prev;
-                prev = current;
-                current = next;
-            }
-            node = prev;
-            return node;
+    //Reverse
+    public Node reverse(Node node) {
+        Node prev = null;
+        Node current = node;
+        Node next = null;
+        
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
         }
+        node = prev;
+        return node;
+    }
         
     Node reverseList(Node head) {
         Node prev = null;
         while (head != null) {
             Node next_node = head.next;
+            if (next_node != null)
+                System.out.println("NextNode: "+next_node.data);
+            else
+                System.out.println("NextNode: null");
             head.next = prev;
+            if (head.next != null)
+                System.out.println("Head.next: "+head.next.data);
+            else
+                System.out.println("Head.next: null");
             prev = head;
+            System.out.println("Prev: "+prev.data);
             head = next_node;
+            if (head != null)
+                System.out.println("Head: "+head.data);
+            else
+                System.out.println("Head: null");
         }
         return prev;
     }

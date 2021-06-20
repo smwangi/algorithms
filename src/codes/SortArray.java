@@ -1,4 +1,3 @@
-package codes;
 
 import java.util.Arrays;
 
@@ -6,6 +5,7 @@ public class SortArray {
     public static void main(String[] args) {
         int[] A = {-1,0,3,10,-4};
         int[] B = {4,3,2,-6,1};
+        sortArr(A);
         sortArr(B);
     }
 

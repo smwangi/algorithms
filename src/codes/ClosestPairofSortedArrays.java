@@ -48,21 +48,17 @@ public class ClosestPairofSortedArrays {
      * @param arr2
      * @param x
      */
-    static void closestPair(int[] arr1, int[]arr2,int x ){
-
+    static void closestPair(int[] arr1, int[]arr2,int x ) {
         int z =0 ,y = 0;
         int min = Integer.MAX_VALUE;
-
         for (int i = 0; i < arr1.length; i++){
             for (int j = 0; j < arr2.length; j++){
                 int t = Math.abs((arr1[i] + arr2[j]) - x);
-
-                if(t < min){
+                if (t < min) {
                     min = t;
                     z = arr1[i];
                     y = arr2[j];
                 }
-
             }
         }
         System.out.println(z+" and "+y);
@@ -92,7 +88,7 @@ public class ClosestPairofSortedArrays {
      *        (c) Else r--
      * 4) Print the result.
      */
-    private static void printClosest(int[] arr1, int[] arr2, int x){
+    private static void printClosest(int[] arr1, int[] arr2, int x) {
         int m = arr1.length;
         int n = arr2.length;
         // Initialize the diff between pair sum and x.
@@ -102,25 +98,23 @@ public class ClosestPairofSortedArrays {
         int res_l = 0, res_r = 0;
 
         // Start from left side of ar1[] and right side of ar2[]
-        int l = 0,r = n-1;
+        int l = 0, r = n-1;
 
         while (l < m && r >= 0){
             // If this pair is closer to x than the previously
             // found closest, then update res_l, res_r and diff
-            if(Math.abs(arr1[l] + arr2[r] -x ) < diff){
+            if (Math.abs(arr1[l] + arr2[r] -x ) < diff) {
                 res_l = l;
                 res_r = r;
                 diff = Math.abs(arr1[l]+arr2[r] -x);
             }
-
             // If sum of this pair is more than x, move to smaller side
-            if(Math.abs(arr1[l]+ arr2[r]) > x){
+            if (Math.abs(arr1[l]+ arr2[r]) > x) {
                 r--;
-            }else{//Move to greater side
+            } else {//Move to greater side
                 l++;
             }
         }
-
         System.out.println(arr1[res_l]+" and "+arr2[res_r]);
     }
 

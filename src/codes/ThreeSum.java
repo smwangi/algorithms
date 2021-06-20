@@ -45,14 +45,16 @@ public class ThreeSum {
 
         for(int i = 0; i < nums.length;i++){
             //int current = nums[i];
-            int l = i+1;
+            int l = i + 1;
             int r =  nums.length -1;
-            while(l < r){
-                int currentSum = nums[i]+nums[l]+nums[r];
-                if(currentSum == 0){
-                    res.add(Arrays.asList(nums[i],nums[l],nums[r--]));
-                }else if(currentSum > 0)r--;
-                else if(currentSum < 0) l++;
+            while (l < r) {
+                int currentSum = nums[i] + nums[l] + nums[r];
+                if (currentSum == 0) {
+                    res.add(Arrays.asList(nums[i], nums[l], nums[r--]));
+                } else if (currentSum > 0)
+                    r--;
+                else if(currentSum < 0)
+                    l++;
             }
 
         }

@@ -10,6 +10,7 @@ public class MissingNumber {
 
         int[] arr = {7,5,1,3,2,6};// {3,5,4,1};
         System.out.println(missingNum(arr));
+        System.out.println(getMissingNumber2(arr));
     }
 
     /**
@@ -23,8 +24,8 @@ public class MissingNumber {
         if(arr.length == 0) return 0;
         Arrays.sort(arr);
 
-        for(int i = 0; i < arr.length;i++){
-            if(arr[i]+1 == arr[i+1])
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i]+1 == arr[i+1])
                 continue;
             else return arr[i]+1;
         }
@@ -46,7 +47,7 @@ public class MissingNumber {
         int missed = 0;
         for (int i = 0; i < nums.length; i++) {
             int index = i + 1;
-            if(nums[i] != index) {
+            if (nums[i] != index) {
                 missed = index;
                 break;
             }
@@ -62,7 +63,7 @@ public class MissingNumber {
      */
     static int getMissingNumber2(int[] nums) {
         int n = nums.length;
-        int total = (n+1)*(n+2)/2;
+        int total = (n + 1) * (n + 2) / 2;
         
         for (int i = 0; i < nums.length; i++) {
             total -= nums[i];

@@ -6,7 +6,8 @@ public class PermutationMain {
 
         int n = arr.length;
         int[] indexes = new int[n];
-
+        permutation("ABC");
+        
         int i = 0;
         printElements(arr);
         while (i < n){
@@ -30,6 +31,7 @@ public class PermutationMain {
         }
         String s = "ABC";
         strPermutations(s,0,s.length()-1);
+       
         //Arrays.stream(indexes).forEachOrdered(System.out::print);
     }
 
@@ -50,14 +52,6 @@ public class PermutationMain {
 
     static void strPermutations(String str, int l, int r){
 
-        //char[] c = str.toCharArray();
-        //int[] indexes = new int[c.length];
-
-        //int i = 0, len = c.length;
-        /*while (i < len){
-
-            swap(c,i % 2 == 0 ? 0 : i);
-        }*/
         if (l == r)
             System.out.println(str);
         else
@@ -67,17 +61,6 @@ public class PermutationMain {
                 //System.out.println(str);
                 strPermutations(str,l+1,r);
                 str = swapChar(str,l,i);
-                //if(indexes[i] < str.length()){
-                   // swapChar(c,i % 2 == 0 ? 0 : indexes[i],i);
-                    //Arrays.toString(c);
-                    //System.out.println(Arrays.toString(c));
-                    //indexes[i]++;
-                    //i = 0;
-
-               // }else{
-                   // indexes[i] = 0;
-                //}
-
             }
     }
 
@@ -88,5 +71,18 @@ public class PermutationMain {
         c[z]  =    temp;
 
         return String.valueOf(c);
+    }
+    static void permutation(String str) {
+        permutation(str, "");
+    }
+    static void permutation(String str, String prefix) {
+        if (str.length() == 0)
+            System.out.println(prefix);
+        else {
+            for (int i = 0; i < str.length(); i++) {
+                String rem = str.substring(0, i) + str.substring(i + 1);
+                permutation(rem, prefix + str.charAt(i));
+            }
+        }
     }
 }

@@ -44,9 +44,51 @@ public class LinkedLists {
                 new LinkedLists().new ListNode(8);
     
         int k = 3;
-        head = deleteKthNode(head, k);
+        //head = deleteKthNode(head, k);
     
         displayList(head);
+        
+        BinarySearch binarySearch = new BinarySearch();
+        Node headSearch = null;
+        headSearch = BinarySearch.push(headSearch,1);
+        headSearch = BinarySearch.push(headSearch,4);
+        headSearch = BinarySearch.push(headSearch,7);
+        headSearch = BinarySearch.push(headSearch,8);
+        headSearch = BinarySearch.push(headSearch,9);
+        headSearch = BinarySearch.push(headSearch,10);
+        int value = 7;
+        if (BinarySearch.binarySearch(headSearch, value) == null) {
+            System.out.println("Value not present");
+        } else {
+            System.out.println("Present");
+        }
+    
+        Node headDelPrime = null;
+        headDelPrime = BinarySearch.push(headDelPrime,17);
+        headDelPrime = BinarySearch.push(headDelPrime,7);
+        headDelPrime = BinarySearch.push(headDelPrime,6);
+        headDelPrime = BinarySearch.push(headDelPrime,16);
+        headDelPrime = BinarySearch.push(headDelPrime,15);
+    
+        System.out.print("Original List: ");
+        printList(headDelPrime);
+        System.out.println("\nMin Max Node");
+        minMaxPrimeNodes(headDelPrime);
+        System.out.println( "Sum of nodes = "
+                + sumOfNodesUtil(headDelPrime));
+    
+        headDelPrime = deletePrimeNodes(headDelPrime);
+    
+        System.out.print("\nModified List: ");
+        printList(headDelPrime);
+        Node node1 = new Node(1);
+        node1.next = new Node(1);
+        node1.next.next = new Node(2);
+        node1.next.next.next = new Node(3);
+        node1.next.next.next.next = new Node(3);
+        Node withoutDupes = deleteDuplicated(node1);
+        System.out.println("Without dups");
+        printList(withoutDupes);
     }
     
     /**
@@ -68,6 +110,110 @@ public class LinkedLists {
         return slow;
     }
     
+    /**
+     * Given the head of a singly linked list, return true if it is a palindrome.
+     *
+     * Example 1:
+     *
+     *
+     * Input: head = [1,2,2,1]
+     * Output: true
+     * Example 2:
+     *
+     *
+     * Input: head = [1,2]
+     * Output: false
+     *
+     *
+     * Constraints:
+     *
+     * The number of nodes in the list is in the range [1, 105].
+     * 0 <= Node.val <= 9
+     *
+     * Algorithm
+     *
+     *     You have to Split the List in the Middle.
+     *     Reverse the Second part of the List.
+     *     Start from these two Lists. And Check if they are similar or not till you reach the end of the list.
+     * @return
+     */
+    static boolean isPalindrome(Node head) {
+        Node slow = head;
+        Node fast = head;
+    
+        // find middle
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next; // two nodes at a time
+            slow = slow.next;
+        }
+        slow = reversed(slow);
+        fast = head;
+        
+        
+        while (slow != null) {
+            if (slow.data != fast.data) {
+                return false;
+            }
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return true;
+    }
+    
+    /**
+     * Algorithm
+     *
+     *     We use Three Pointers to reverse a List.
+     *     The Three Pointers are Previous, Current and Next.
+     *     Initialize Current pointer to Head.
+     *     Traverse till the end of the List.
+     *     Initialize the Previous pointer be null since there is nothing before head.
+     *     At Each index, We have to know the next node. for traversing forward.
+     *     Use Next to store the curr.next
+     *     Now to Reverse the list. The current pointer’s next have to point the previous node.
+     *     Now we have reversed the index. We have to repeat this step till the end of the list.
+     *     We have to simply move one step ahead.
+     *     For that, The current pointer becomes the previous pointer.
+     *     The next pointer becomes the current.
+     * @param head
+     * @return
+     */
+    static Node reversed(Node head) {
+        Node prev = null;
+        while (head != null) {
+            Node next_node = head.next;
+            head.next = prev;
+            prev = head;
+            head = next_node;
+        }
+        return prev;
+    }
+    
+    static boolean isPalindrome2(Node head) {
+        if (head == null || head.next == null) return true;
+        
+        Node newHead = null;
+        Node fast = head;
+        
+        while (fast != null) {
+            if (fast.next == null) {
+                head = head.next;
+            } else {
+                fast = fast.next.next;
+            }
+            Node next = head.next;
+            head.next = newHead;
+            newHead = head;
+            head = next;
+        }
+        while (newHead != null) {
+            if (newHead.data != head.data) return false;
+            newHead = newHead.next;
+            head = head.next;
+        }
+        
+        return true;
+    }
     /**
      * Write a function to delete a node in a singly-linked list. You will not be given access to the head of the list,
      * instead you will be given access to the node to be deleted directly.
@@ -346,5 +492,458 @@ public class LinkedLists {
             }
         }
         return l;
+    }
+    
+    /**
+     * Binary Search on Singly Linked List
+     * Difficulty Level : Easy
+     *
+     * Given a singly linked list and a key, find key using binary search approach.
+     * To perform a Binary search based on Divide and Conquer Algorithm, determination of the middle element is important.
+     * Binary Search is usually fast and efficient for arrays because accessing the middle index between two given indices
+     * is easy and fast(Time Complexity O(1)). But memory allocation for the singly linked list is dynamic and non-contiguous,
+     * which makes finding the middle element difficult. One approach could be of using skip list,
+     * one could be traversing the linked list using one pointer.
+     *
+     * Prerequisite : Finding middle of a linked list.
+     *
+     * Note: The approach and implementation provided below are to show how Binary Search can be implemented on a linked list.
+     * The implementation takes O(n) time.
+     *
+     * Approach :
+     *
+     * Here, start node(set to Head of list), and the last node(set to NULL initially) are given.
+     * Middle is calculated using two pointers approach.
+     * If middle’s data matches the required value of search, return it.
+     * Else if middle’s data < value, move to upper half(setting start to middle's next).
+     * Else go to lower half(setting last to middle).
+     * The condition to come out is, either element found or entire list is traversed.
+     * When entire list is traversed, last points to start i.e. last -> next == start.
+     *
+     * In main function, function InsertAtHead inserts value at the beginning of linked list.
+     * Inserting such values(for sake of simplicity) so that the list created is sorted.
+     *
+     * Given a singly linked list and a key, find key using binary search approach.
+     * To perform a Binary search based on Divide and Conquer Algorithm, determination of the middle element is important. Binary Search is usually fast and efficient for arrays because accessing the middle index between two given indices is easy and fast(Time Complexity O(1)). But memory allocation for the singly linked list is dynamic and non-contiguous, which makes finding the middle element difficult. One approach could be of using skip list, one could be traversing the linked list using one pointer.
+     *
+     * Prerequisite : Finding middle of a linked list.
+     *
+     * Note: The approach and implementation provided below are to show how Binary Search can be implemented on a linked list.
+     * The implementation takes O(n) time.
+     *
+     * Examples :
+     *
+     * Input : Enter value to search : 7
+     * Output : Found
+     *
+     * Input : Enter value to search : 12
+     * Output : Not Found
+     */
+    static class BinarySearch {
+        static int sum = 0;
+        // Function to insert a node at the beginning of the Singly Linked List
+        static Node push(Node head, int data) {
+            Node newNode = new Node(data);
+            newNode.next = head;
+            head = newNode;
+            return head;
+        }
+        
+        // Function to find middle element using Fast and Slow Pointers
+        static Node middleNode(Node start, Node last) {
+            if (start == null)
+                return null;
+            Node slow = start;
+            Node fast = start.next;
+            
+            while (fast != last) {
+                fast = fast.next;
+                if (fast != last) {
+                    slow = slow.next;
+                    fast = fast.next;
+                }
+            }
+            return slow;
+        }
+    
+        /**
+         * Algorithm
+         *
+         *     This approach is called a Two Pointer Approach.
+         *     More Often than not, you will be implementing this approach to solve a LL Problem
+         *     Initialize two Pointers Slow and Fast.
+         *     Traverse till the End of the List based on the Fast pointer.
+         *     For Each iteration, The Slow pointer moves one step while the Fast Pointer moves two Steps.
+         *     So When the Fast Pointer Reaches the End of the List the Slow Pointer will be in the middle of the Linked List.
+         * @param head
+         * @return
+         */
+        static Node middleNode2(Node head) {
+            if (head == null || head.next == null)
+                return head;
+            Node slow = head;
+            Node fast = head;
+            
+            while (fast != null && fast.next != null) {
+                slow = slow.next;
+                fast = fast.next.next;
+            }
+            return slow;
+        }
+        
+        // Function to insert a node at the beginning of the Singly Linked List
+        static Node binarySearch(Node head, int value) {
+            Node start = head;
+            Node last = null;
+            do {
+                // Find Middle
+                Node mid = middleNode(start, last);
+                // If middle is Empty
+                if (mid == null)
+                    return null;
+                // If value is present at middle
+                if (mid.data == value)
+                    return mid;
+                // If value is less than mid
+                else if (mid.data > value) {
+                    start = mid.next;
+                }
+                // if the value is more than mid
+                else
+                    last = mid;
+            } while (last == null || last != start);
+            // value not present
+            return null;
+        }
+    }
+    // Delete all Prime Nodes from a Singly Linked List
+    /**
+     * Given a singly linked list containing N nodes, the task is to delete all nodes from the list which are prime.
+     *
+     * Examples:
+     *
+     * Input : List = 15 -> 16 -> 6 -> 7 -> 17
+     * Output : Final List = 15 -> 16 -> 6
+     *
+     * Input : List = 15 -> 3 -> 4 -> 2 -> 9
+     * Output :Final List = 15 ->4 -> 9
+     *
+     * Approach: The idea is to traverse the nodes of the singly linked list one by one and get the pointer of the nodes which are prime.
+     * Delete those nodes by following the approach used in the post: Delete a node from Linked List.
+     */
+    static class DeletePrimeNode {
+        static Node push(Node head, int data) {
+            // allocate node
+            Node new_node = new Node(data);
+            // link the old list off the new node
+            new_node = head;
+            // move the head to point to the new node
+            head = new_node;
+            return head;
+        }
+    }
+    static boolean isPrime(int n) {
+        // Corner cases
+        if (n <= 1)
+            return false;
+        if (n <= 3)
+            return true;
+        // This is checked so that we can skip middle five numbers in below loop
+        if (n % 2 == 0 || n % 3 == 0)
+            return false;
+        for (int i = 5; i * i <= n; i = i + 6)
+            if (n % i == 0 || n % (i + 2) == 0)
+                return false;
+        return true;
+    }
+    // function to delete a node in a singly Linked List.
+    // head_ref -. pointer to head node pointer.
+    // del -. pointer to node to be deleted
+    static Node deleteNode(Node head, Node del) {
+        // Base case
+        Node temp = head;
+        if (head == null || del == null)
+            return null;
+        // if node to be deleted is head node
+        if (head == del)
+            head = del.next;
+        // traverse list till not found
+        // delete node
+        while (temp.next != del) {
+            temp = temp.next;
+        }
+        // copy address of node
+        temp.next = del.next;
+        return head;
+    }
+    // function to delete all prime nodes
+    // from the singly linked list
+    static Node deletePrimeNodes(Node head) {
+        Node ptr = head;
+        Node next;
+        while (ptr != null) {
+            next = ptr.next;
+            // if true, delete node 'ptr'
+            if (isPrime(ptr.data))
+                deleteNode(head, ptr);
+            ptr = next;
+        }
+        return head;
+    }
+    // function to print nodes in a given singly linked list
+    static void printList(Node head) {
+        while (head != null) {
+            System.out.print(head.data+" ");
+            head = head.next;
+        }
+    }
+    
+    /**
+     * Minimum and Maximum Prime Numbers of a Singly Linked List
+     *
+     * Given a singly linked list containing N nodes, the task is to find the minimum and maximum prime number.
+     *
+     * Examples:
+     *
+     * Input : List = 15 -> 16 -> 6 -> 7 -> 17
+     * Output : Minimum : 7
+     *          Maximum : 17
+     *
+     * Input : List = 15 -> 3 -> 4 -> 2 -> 9
+     * Output : Minimum : 2
+     *          Maximum : 3
+     * Approach:
+     *
+     * The idea is to traverse the linked list to the end and initialize the max and min variable to INT_MIN and INT_MAX respectively.
+     * Check if the current node is prime or not. If Yes:
+     * If current node’s value is greater than max then assign current node’s value to max.
+     * If current node’s value is less than min then assign current node’s value to min.
+     * Repeat above step until end of list is reached.
+     * Below is the implementation of above idea:
+     */
+    // Function to find maximum and minimum
+    // prime nodes in a linked list
+    static void minMaxPrimeNodes(Node head_ref)
+    {
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        Node ptr = head_ref;
+        while (ptr != null) {
+            // if current node is prime
+            if (isPrime(ptr.data)) {
+                // update minimum
+                min = Math.min(min, ptr.data);
+                // update maximum
+                max = Math.max(max, ptr.data);
+            }
+            ptr = ptr.next;
+        }
+        System.out.println("Minimum: "+min);
+        System.out.println("Maximum: "+max);
+    }
+    /**
+     * Sum of the nodes of a Singly Linked List
+     * Given a singly linked list. The task is to find the sum of nodes of the given linked list.
+     * Examples:
+     * Input: 7->6->8->4->1
+     * Output: 26
+     * Sum of nodes:
+     * 7 + 6 + 8 + 4 + 1 = 26
+     *
+     * Input: 1->7->3->9->11->5
+     * Output: 36
+     *
+     * Recursive Solution:
+     *
+     * Call a function by passing the head and variable to store the sum.
+     * Then recursively call the function by passing the next of current node and sum variable.
+     * Add the value of the current node to the sum.
+     * Below is the implementation of above approach:
+     */
+    // function to recursively find the sum of
+    // nodes of the given linked list
+    static int sum = 0;
+    static void sumOfNodes(Node head) {
+        // if head = null
+        if (head == null)
+            return;
+        // recursively traverse the remaining nodes
+        sumOfNodes(head.next);
+        // accumulate sum
+        sum = sum + head.data;
+    }
+    // utility function to find the sum of nodes
+    static int sumOfNodesUtil(Node head) {
+        sum = 0;
+        // find the sum of nodes
+        sumOfNodes(head);
+        // required sum
+        return sum;
+    }
+    // function to delete all non-prime nodes
+    // from the singly linked list
+    static Node deleteNonPrimeNodes(Node head) {
+        // Remove all composite nodes at the beginning
+        Node ptr = head;
+        while (ptr != null && !isPrime(ptr.data)) {
+            Node temp = ptr;
+            ptr = ptr.next;
+        }
+        head = ptr;
+        if (ptr == null)
+            return null;
+        // Remove remaining nodes
+        Node curr = ptr.next;
+        while (curr != null) {
+            if (!isPrime(curr.data)) {
+                ptr.next = curr.next;
+                curr = ptr.next;
+            } else {
+                ptr = curr;
+                curr = curr.next;
+            }
+        }
+        return head;
+    }
+    
+    /**
+     * Algorithm
+     *
+     *     Create a dummy variable. This is done to overcome edge conditions.
+     *     Now traverse till both of the Linked Lists are Empty.
+     *     This is done by using an OR Condition.
+     *
+     * (l1 != null || l2 != null)
+     *
+     * 4. When you introduce this condition, it is important that you think of the Edge Conditions. i,e What if one list is longer than the other. Then one node will be null while the other is not null. Here we don’t even have to check which one to merge since you just have to merge the one with the value.
+     *
+     * 5. At each iteration, Check which one of the element is smaller, merge that to the result list. Move forward in that list alone.
+     *
+     * 6. Repeat this till the End of both the Lists.
+     * @param n1
+     * @param n2
+     * @return
+     */
+    Node mergeTwoList(Node n1, Node n2) {
+        Node ans = new Node(0);
+        Node a = ans;
+        while (n1 != null || n2 != null) {
+            if (n1 == null) {
+                ans.next = n2;
+                break;
+            }
+            if (n2 == null) {
+                ans.next = n1;
+                break;
+            }
+            if (n1.data < n2.data){
+                ans.next = n1;
+                n1 = n1.next;
+            } else {
+                ans.next = n2;
+                n2 = n2.next;
+            }
+            ans = ans.next;
+        }
+        return a.next;
+    }
+    /**
+     * Remove Nth Node From End of List
+     *
+     * Given a linked list, remove the n-th node from the end of list and return its head.
+     *
+     * Example:
+     *
+     * Given linked list: 1->2->3->4->5, and n = 2.After removing the second node from the end, the linked list becomes 1->2->3->5.
+     *
+     * Remove Nth Node From End of List
+     *
+     * Given a linked list, remove the n-th node from the end of list and return its head.
+     *
+     * Example:
+     *
+     * Given linked list: 1->2->3->4->5, and n = 2.After removing the second node from the end, the linked list becomes 1->2->3->5.
+     *
+     * Remove Nth Node From End of List
+     *
+     * Given a linked list, remove the n-th node from the end of list and return its head.
+     *
+     * Example:
+     *
+     * Given linked list: 1->2->3->4->5, and n = 2.After removing the second node from the end, the linked list becomes 1->2->3->5.
+     */
+    Node removeNthFromEnd(Node head, int n) {
+        Node sen = new Node(0);
+        sen.next = head;
+        Node first = head;
+        
+        while (n > 0) {
+            first = first.next;
+            n--;
+        }
+        Node second = sen;
+        while (first != null) {
+            first = first.next;
+            second = second.next;
+        }
+        second.next = second.next.next;
+        return sen.next;
+    }
+    /**
+     * Reverse Linked List II
+     *
+     * Algorithm
+     *
+     *     Traverse till the mth node. Make it Current Node.
+     *     Make the m-1 node as a start node.
+     *     The Start Node indicates the start of the k-nodes that you have to reverse.
+     *     Then you have Reverse the List from m to n.
+     *     Now you have to link the start node to the last node of the reversed node.
+     *     Link the Last Node to the current nth node.
+     *     Return the List
+     *
+     */
+    public Node reverseBetween(Node head, int m, int n) {
+    
+        Node curr  =head;
+        Node start= null;
+        while( m > 1)
+        {
+            start = curr;
+            curr = curr.next;
+            m--;
+            n--;
+        }
+    
+        Node tail = curr;
+        Node prev = null;
+        while( n >0)
+        {
+            Node next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+            n--;
+        }
+        if(start != null)
+            start.next = prev;
+        else
+            head = prev;
+        tail.next = curr;
+    
+        return head;
+    
+    }
+    //Remove Duplicates from Sorted List
+    public static Node deleteDuplicated(Node head) {
+        Node current = head;
+        while (current != null && current.next != null) {
+            if (current.next.data == current.data) {
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
+        }
+        return head;
     }
 }

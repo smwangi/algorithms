@@ -1,9 +1,10 @@
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class Graph {
-    private int V;
-    private LinkedList<Integer> adj[];
+    private int V; // Number of vertices
+    private LinkedList<Integer> adj[]; //Adjacency List
     
     public static void main(String[] args) {
         Graph g = new Graph(4);
@@ -26,18 +27,29 @@ public class Graph {
             adj[i] = new LinkedList<>();
         }
     }
+    
+    // Add edge to graph
     void addEdge(int v, int w) {
         adj[v].add(w);
     }
     
+    // Print BFS traversal from a given source s
     void BFS(int s) {
+        // Mark all the vertices as not visited (By Default)
+        // Set as false
         boolean visited[] = new boolean[V];
-        LinkedList<Integer> q = new LinkedList<>();
+        // Create a queue for BFS
+        Queue<Integer> q = new LinkedList<>();
+        // Mark the current not as visited and enqueue it
         visited[s] = true;
         q.add(s);
         while (q.size() != 0) {
+            // Dequeue a vertex from queue and print it
             s = q.poll();
-            System.out.println(s+" ");
+            System.out.print(s+" ");
+            // Get all adjacent vertices of the dequeued vertex s
+            // If a adjacent has not been visited, then mark it
+            // visited and enqueue it
             Iterator<Integer> i = adj[s].listIterator();
             while (i.hasNext()) {
                 int n = i.next();
@@ -47,5 +59,6 @@ public class Graph {
                 }
             }
         }
+        System.out.println();
     }
 }

@@ -55,7 +55,7 @@ public class ConcatenatedStrUniqueChars {
      * but skip the word that have duplicate characters.
      * The examples is kind of misleading,
      * but the input string can have duplicate characters,
-     * no need to considerate these strings.
+     * no need to consider these strings.
      *
      * For each string,
      * we check if it's conflict with the combination that we found.

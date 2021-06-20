@@ -38,7 +38,7 @@ public class ClimbingStairs {
      * Approach 1: Brute Force
      *
      * In this brute force approach we take all possible step combinations i.e. 1 and 2, at every step.
-     * At every step we are calling the function climbStairs for step 111 and 222,
+     * At every step we are calling the function climbStairs for step 1 and 2,
      * and return the sum of returned values of both functions.
      *
      * climbStairs(i,n)=(i+1,n) + climbStairs(i+2,n)

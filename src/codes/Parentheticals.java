@@ -21,7 +21,7 @@
  * In this problem, we can realize our stack would only hold '(' characters.
  * So instead of storing each of those characters in a stack, we can store the number of items our stack would be holding.
  *
- * That gets us from O(n)O(n) space to O(1)O(1) space.
+ * That gets us from O(n) space to O(1) space.
  *
  * It's pretty cool when you can replace a whole data structure with a single integer :)
  */

@@ -13,17 +13,20 @@ public class TwoSum {
 		System.out.println(Arrays.toString(res));
 		System.out.println(Arrays.toString(twoSumDP(nums,9)));
 		//Arrays.asList(res).forEach(e -> System.out.println(e));
+		int[] arr = {30, 20, 50} ;
+		int K = 70;
+		System.out.println(twoSumLessThanK(arr, K));
 	}
 	
 	private static int[] twoSum(int[] nums, int target) {
 
 		int[] res = new int[2];
 		
-		for(int i = 0;i<nums.length;i++) {
+		for (int i = 0;i<nums.length;i++) {
 			
-			for(int j=i+1;j<nums.length;j++) {
+			for (int j = i + 1; j < nums.length; j++) {
 				//System.out.println(nums[i]+" - "+nums[j]);
-				if(nums[i] + nums[j] == target) {
+				if (nums[i] + nums[j] == target) {
 					res[0] = nums[i];
 					res[1] = nums[j];
 				}
@@ -50,16 +53,33 @@ public class TwoSum {
 	 * Space complexity : O(n). The extra space required depends on the number of items stored in the hash table,
 	 * which stores at most n elements.
 	 */
-	private static int[] twoSumDP(int[] nums, int target){
+	private static int[] twoSumDP(int[] nums, int target) {
 		Map<Integer, Integer> map = new HashMap<>();
 
 		for(int i = 0; i< nums.length; i++){
-			if(map.containsKey(target-nums[i])){
+			if(map.containsKey(target - nums[i])) {
 				return new int[]{map.get(target-nums[i]),i};
 			}else{
 				map.put(nums[i],i);
 			}
 		}
 		return new int[0];
+	}
+	// Two sum less than k
+	static int twoSumLessThanK(int[] A, int K) {
+		Arrays.sort(A);
+		// put pointers at begin/end
+		int l = 0, r = A.length - 1;
+		int ans = -1;
+		while (l < r) {
+			int curSum = A[l] + A[r];
+			if (curSum < K) {
+				ans = Math.max(ans, curSum);
+				l++;
+			} else {
+				r--;
+			}
+		}
+		return ans;
 	}
  }

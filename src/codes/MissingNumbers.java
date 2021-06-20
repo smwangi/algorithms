@@ -21,9 +21,9 @@ public class MissingNumbers {
         int[] a = new int[arr2.length];
 
         int startIdx = 0;
-        for(int i = 0; i < arr.length; i++){
+        for(int i = 0; i < arr.length; i++) {
 
-         INNER:   for(int j = startIdx; j < arr2.length; j++){
+         INNER:   for(int j = startIdx; j < arr2.length; j++) {
             System.out.println(arr[i]+" <> "+arr2[j]+" <> "+startIdx+" <> "+j);
              startIdx++;
                 if(arr2[j] == arr[i]){
@@ -36,7 +36,6 @@ public class MissingNumbers {
 
          }
         }
-
         return Arrays.stream(a).filter(x -> x > 0).distinct().toArray();
     }
 }

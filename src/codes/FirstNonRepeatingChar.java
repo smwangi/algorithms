@@ -52,6 +52,8 @@ public class FirstNonRepeatingChar {
        System.out.println( firstNonRepeatingChar.firstNonRepeating(s));
        System.out.println(firstNonRepeatingChar.firstNon(s));
        System.out.println(firstNonRepeatingIntArr(s));
+       System.out.println(firstNonRepeatingCharacter("abcdcaf"));
+        System.out.println(firstNonRepeatingCharacter2("abcdcaf"));
     }
 
     char firstNonRepeating(String s) {
@@ -99,5 +101,35 @@ public class FirstNonRepeatingChar {
             if(chars[c - 'a'] == 1)return c;
         }
         return '_';
+    }
+    /**
+     * A function that takes in a string of lowercase English-alphabet letters and returns the index of the string's first non-repeating
+     * character.
+     * The first non-repeating character is the first character in a string that occurs only once
+     * If the input string doesn't have any non-repeating characters, your function should return -1
+     */
+    static int firstNonRepeatingCharacter(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            boolean foundDuplicate = false;
+            for (int j = 0; j < str.length(); j++) {
+                if (str.charAt(i) == str.charAt(j) && i != j)
+                    foundDuplicate = true;
+            }
+            if (!foundDuplicate)
+                return i;
+        }
+        return -1;
+    }
+    static int firstNonRepeatingCharacter2(String str) {
+        Map<Character, Integer> map = new LinkedHashMap<>();
+        for (int i = 0; i < str.length(); i++) {
+            map.put(str.charAt(i), map.getOrDefault(str.charAt(i), 0) + 1);
+        }
+        
+        for (int j = 0; j < str.length(); j++) {
+            if (map.get(str.charAt(j)) == 1)
+                return j;
+        }
+        return -1;
     }
 }

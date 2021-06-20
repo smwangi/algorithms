@@ -40,12 +40,14 @@ public class BalancedBinaryTree {
 
     public boolean isBalanced(TreeNode root) {
 
-        int lh = 0,rh = 0;
-        if(root == null)return true;
+        int lh = 0, rh = 0;
+        if (root == null)
+            return true;
 
         lh = height(root.left);
         rh = height(root.right);
-        if(Math.abs(lh - rh)<=1 && isBalanced(root.left) && isBalanced(root.right))
+        
+        if(Math.abs(lh - rh) <= 1 && isBalanced(root.left) && isBalanced(root.right))
             return true;
         return false;
     }
@@ -55,7 +57,7 @@ public class BalancedBinaryTree {
         if(node == null)
             return 0 ;
 
-        return 1+ Math.max(height(node.left),height(node.right));
+        return 1 + Math.max(height(node.left), height(node.right));
     }
     boolean balance = true;
     public boolean isBalanced2(TreeNode root) {

@@ -50,7 +50,7 @@ public class RemoveKDigits {
                 i++;
             }
            // System.out.print(" i "+i);
-            sb.delete(i,i+1);
+            sb.delete(i, i + 1);
         }
         int i = 0;
 
@@ -79,16 +79,16 @@ public class RemoveKDigits {
             }
             i++;
         }
-        while (i < num.length()){
+        while (i < num.length()) {
             characters.push(num.charAt(i));
             i++;
         }
         StringBuilder sb = new StringBuilder();
-        while (!characters.isEmpty()){
+        while (!characters.isEmpty()) {
             sb.append(characters.pop());
         }
         i = 0;
-        while (i < sb.length() - 1 && sb.charAt(i) == '0'){
+        while (i < sb.length() - 1 && sb.charAt(i) == '0') {
             i++;
         }
 

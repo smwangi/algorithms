@@ -7,6 +7,9 @@ public class Fibonnaci {
 
        int res =printFibonnaci(2);
        System.out.println(res+" ");
+       int[] memo = new int[10 + 1];
+       System.out.println(fib(10, memo));
+       System.out.println(getNthFib(10));
     }
 
     private static int printFibonnaci(int n){
@@ -32,5 +35,20 @@ public class Fibonnaci {
         }
         System.out.print(Arrays.toString(cache));
         return cache[n];
+    }
+    
+    static int fib(int n, int[] memo) {
+        if (n < 0) return -1;
+        else if (n == 0) return 1;
+        else if (memo[n] > 0) return memo[n];
+        memo[n] = fib(n - 1, memo) + fib(n - 2, memo);
+        return memo[n];
+    }
+    static int getNthFib(int n) {
+        if (n == 2) return 1;
+        else if (n == 1) return 0;
+        else {
+            return getNthFib(n - 1) + getNthFib(n - 2);
+        }
     }
 }

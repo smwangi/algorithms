@@ -24,6 +24,14 @@ public class DFSImplementation {
         unidirectedByAdjacencyList.addEdge(1,2);
         unidirectedByAdjacencyList.addEdge(2,0);
         unidirectedByAdjacencyList.printAdjacencyList();
+        
+        GraphDfs graphDfs = new DFSImplementation(). new GraphDfs(4);
+        graphDfs.addEdge(0,1);
+        graphDfs.addEdge(0,2);
+        graphDfs.addEdge(1,2);
+        graphDfs.addEdge(2,3);
+        System.out.println("Following is the Depth First Traversal.");
+        graphDfs.DFS(0);
     }
     class Graph{
         private int vertices; //No of vertices
@@ -96,5 +104,37 @@ public class DFSImplementation {
                         adjacencyList.get(i), System.lineSeparator());
             }
         }
+    }
+    class GraphDfs {
+        private LinkedList<Integer> adjList[];
+        private boolean visited[];
+        
+        // Graph Creation
+        GraphDfs(int vertices) {
+            adjList = new LinkedList[vertices];
+            visited = new boolean[vertices];
+            for (int i = 0; i < vertices; i++) {
+                adjList[i] = new LinkedList<>();
+            }
+        }
+        // Add Edges
+        void addEdge(int src, int dest) {
+            adjList[src].add(dest);
+        }
+        
+        // DFS Algorithm
+        void DFS(int vertex) {
+            visited[vertex] = true;
+            System.out.print(vertex+" ");
+            
+            Iterator<Integer> iterator = adjList[vertex].listIterator();
+            while (iterator.hasNext()) {
+                int adj = iterator.next();
+                if (!visited[adj])
+                    DFS(adj);
+            }
+            System.out.println();
+        }
+        
     }
 }

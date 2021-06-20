@@ -2,7 +2,8 @@ import java.sql.Array;
 import java.util.*;
 
 /**
- * Given a list of reviews, a list of keywords and an integer k. Find the most popular k keywords in order of most to least frequently mentioned.
+ * Given a list of reviews, a list of keywords and an integer k.
+ * Find the most popular k keywords in order of most to least frequently mentioned.
  *
  * The comparison of strings is case-insensitive.
  * Multiple occurances of a keyword in a review should be considred as a single mention.

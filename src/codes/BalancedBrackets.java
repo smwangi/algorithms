@@ -1,3 +1,5 @@
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Stack;
 
 /**
@@ -71,6 +73,7 @@ public class BalancedBrackets {
         String brackets3 = "{[()]}";
         String brackets2 = "}][}}(}][))]";
        System.out.println(isBalanced2(brackets3));
+       System.out.println(areBracketsBalanced(brackets3));
     }
 
     /**
@@ -114,5 +117,42 @@ public class BalancedBrackets {
             }
         }
         return deque.isEmpty() ? "YES":"NO";
+    }
+    
+    static boolean areBracketsBalanced(String exp) {
+        // Using ArrayDequeue is faster than using Stack class
+        Deque<Character> stack = new ArrayDeque<>();
+        // Traversing the Expression
+        for (int i = 0; i < exp.length(); i++) {
+            char x = exp.charAt(i);
+            if (x == '(' || x == '[' || x == '{') {
+                // Push element in Stack
+                stack.push(x);
+                continue;
+            }
+            // If current character is not opening bracket, then it must be closing. So stack cannot be empty at this point
+            if (stack.isEmpty())
+                return false;
+            char check;
+            switch (x) {
+                case ')':
+                    check = stack.pop();
+                    if (check == '{' || check == '[')
+                        return false;
+                    break;
+                case '}':
+                    check = stack.pop();
+                    if (check == '(' || check == '[')
+                        return false;
+                    break;
+                case ']':
+                    check = stack.pop();
+                    if (check == '{' || check == '(')
+                        return false;
+                    break;
+            }
+        }
+        // Check if stack is empty
+        return stack.isEmpty();
     }
 }

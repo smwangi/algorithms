@@ -1,17 +1,15 @@
 
-package codes;
-
 import java.util.Arrays;
 
 public class MissingLetter {
 
     public static void main(String[] args) {
-        char[] arr = {'O','Q','R','S'};
-        //char[] arr = {'a','b','c','d','f'};
-        System.out.println(findMissingLetter(arr));
-        System.out.println(findMissingLetter1(arr));
-        System.out.println(findMissingLetter2(arr));
-        System.out.println(findMissingLetter3(arr));
+        //char[] arr = {'O','Q','R','S'};
+        char[] arr = {'a','b','c','d','f'};
+        System.out.println("Method 0: "+findMissingLetter(arr));
+        System.out.println("Method 1: "+findMissingLetter1(arr));
+        System.out.println("Method 2: "+findMissingLetter2(arr));
+        System.out.println("Method 3: "+findMissingLetter3(arr));
     }
 
     public static char findMissingLetter(char[] array)
@@ -25,6 +23,7 @@ public class MissingLetter {
             System.out.print(array[i]- a +" ");
             arr[i] = array[i] - a;
         }
+        System.out.println();
         Arrays.stream(arr).forEach(x -> System.out.print(" "+x));
         int val = arr[0];
         for(int i = 0;i<arr.length; i ++){
@@ -33,14 +32,15 @@ public class MissingLetter {
             else
                 return (char)(val + a);
         }
+        System.out.println();
         return ' ';
     }
 
     public static char findMissingLetter1(char[] array)
     {
-        for (int i = 1; i < array.length ; i++){
-            if(array[i] - array[i-1] != 1){
-                return (char)(array[i-1]+1);
+        for (int i = 1; i < array.length ; i++) {
+            if(array[i] - array[i-1] != 1) {
+                return (char)(array[i-1] + 1);
             }
         }
         throw new IllegalArgumentException("Should not happen!");
@@ -48,9 +48,9 @@ public class MissingLetter {
 
     public static char findMissingLetter2(char[] a)
     {
-        for(int i = 0; i < a.length; i++){
-            if((int)a[i+1] != (int)a[i]+1){
-                return (char)(((int)a[i])+1);
+        for (int i = 0; i < a.length; i++) {
+            if ((int)a[i+1] != (int)a[i] + 1) {
+                return (char)(((int)a[i]) + 1);
             }
         }
         return ' ';
