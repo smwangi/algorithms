@@ -42,7 +42,7 @@ public class DFSImplementation {
         Graph(int v){
             vertices = v;
             adj_list = new LinkedList[v];
-            for (int i = 0; i<v; ++i){
+            for (int i = 0; i < v; ++i) {
                 adj_list[i] = new LinkedList<>();
             }
         }
@@ -52,23 +52,25 @@ public class DFSImplementation {
         }
         // helper function for DFS technique
         void DFS_helper(int v, boolean visited[]){
-            //current node is visited
+            //mark current node as visited and print it
             visited[v] = true;
             System.out.print(v+" ");
+            // Recur for all the vertices adjacent to this
             //process all adjacent vertices
             Iterator<Integer> i = adj_list[v].listIterator();
-            while (i.hasNext()){
+            while (i.hasNext()) {
                 int n = i.next();
-                if(!visited[n]){
+                if (!visited[n]) {
                     DFS_helper(n,visited);
                 }
             }
         }
-
+        // The function to do DFS traversal. It uses recursive
         void DFS(int v){
+            // Mark all the vertices as not visited (default as false in Java)
             //initially none of the vertices are visited
             boolean visited[] = new boolean[vertices];
-            // call recursive DFS_helper function for DFS technique
+            // call recursive DFS_helper function for DFS traversal
             DFS_helper(v,visited);
         }
     }
@@ -80,7 +82,7 @@ public class DFSImplementation {
         public GraphUnidirectedByAdjacencyList(int V){
             this.V = V;
             adjacencyList = new ArrayList<>(V);
-            for (int i = 0; i< V; ++i){
+            for (int i = 0; i < V; ++i){
                 adjacencyList.add(new ArrayList<>());
             }
         }
@@ -135,6 +137,28 @@ public class DFSImplementation {
             }
             System.out.println();
         }
+    }
+    class Node {
+        String name;
+        List<Node> children = new ArrayList<>();
         
+        public Node(String name) {
+            this.name = name;
+        }
+        
+        // O(v+e) time | O(v) space -> v = nodes, e = edges
+        public List<String> depthFirstSearch(List<String> array) {
+            array.add(this.name);
+            for (int i = 0; i < children.size(); i++) {
+                children.get(i).depthFirstSearch(array);
+            }
+            return array;
+        }
+        
+        public Node addChild(String name) {
+            Node child = new Node(name);
+            children.add(child);
+            return this;
+        }
     }
 }
