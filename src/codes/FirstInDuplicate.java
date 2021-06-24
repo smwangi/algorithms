@@ -39,6 +39,7 @@ public class FirstInDuplicate {
         int[] a = {2, 1, 3, 5, 3, 2};
         System.out.println(firstDuplicate(a));
         System.out.println(firstDuplicate2(a));
+        test();
     }
     static int firstDuplicate(int[] a) {
         int dup = -1;
@@ -63,5 +64,28 @@ public class FirstInDuplicate {
             }
         }
         return -1;
+    }
+    
+    static void test() {
+        Integer a, b, p, sum, N = 5;
+        p = -5;
+        a = 0;
+        b = N;
+        sum = 0;
+        while (a < N && b > 0) {
+            if (p > 0) {
+                a = a + 1;
+                sum = sum + 1;
+            } else {
+                a = a -1;
+                b = b - 1;
+                sum = sum + 1;
+            }
+        }
+        modify(p);
+        System.out.println("Sum "+sum+" a "+a+" b "+b);
+    }
+    static void modify(Integer p) {
+       p--;
     }
 }
