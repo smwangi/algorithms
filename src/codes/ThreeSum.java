@@ -37,6 +37,9 @@ public class ThreeSum {
         int[]arr = {3,0,-2,-1,1,2};
         sum.threeSumz(arr).forEach(x -> System.out.println(x));
         sum.threeSums(arr).forEach(x -> System.out.println(x));
+        int A[] = { 1, 4, 45, 6, 10, 8 };
+        int sum3 = 22;
+        find3Numbers(A, sum3);
     }
 
     private List<List<Integer>> threeSums(int[]nums){
@@ -95,5 +98,36 @@ public class ThreeSum {
             result.add(list);
         }
         return result;
+    }
+    /**
+     * Using Hashing
+     * Uses extra space but is simpler than the two pointers approach.
+     * Run two loops outer loop from start to end and inner loop from i+1 to end. Create a hashmap or set to store
+     * the elements in between i+1 to j - 1. So if the given sum is x, check if there is a number in the set which is equal to
+     * x-arr[i]-arr[j]. if yes print the triplet.
+     *
+     * Algorithm.
+     * 1. Traverse the array from start to end (loop counter i)
+     * 2. Create a HashMap or set to store unique pairs.
+     * 3. Run another loop from i+1 to end of the array (loop counter j)
+     * 4. If there is an element in the set which is equal to x-arr[i]-arr[j], then print the triplet (arr[i], x-arr[i]-arr[j]) and break.
+     * 5. Insert the jth element in the set
+     */
+    static boolean find3Numbers(int[] arr, int sum) {
+        // Fix the first element as arr[i]
+        int arr_size = arr.length;
+        for (int i = 0; i < arr_size - 2; i++) {
+            // Find pair in subarray arr[i+1...n-1] with sum equal to sum - arr[i]
+            HashSet<Integer> s = new HashSet<>();
+            int curr_sum = sum - arr[i];
+            for (int j = i + 1; j < arr_size; j++) {
+                if (s.contains(curr_sum - arr[j])) {
+                    System.out.printf("Triplet is %d,%d, %d", arr[i], arr[j], curr_sum - arr[j]);
+                    return true;
+                }
+                s.add(arr[j]);
+            }
+        }
+        return false;
     }
 }

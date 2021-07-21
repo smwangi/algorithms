@@ -19,7 +19,8 @@
  */
 public class SqrtPrecision {
     public static void main(String[] args) {
-    
+        int number = 12, precision = 0;
+        System.out.println(squareRoot(number, precision));
     }
     static float squareRoot(int number, int precision) {
         int start = 0, end = number;

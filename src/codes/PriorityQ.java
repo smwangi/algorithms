@@ -1,5 +1,3 @@
-package codes;
-
 import java.util.Comparator;
 import java.util.Objects;
 import java.util.PriorityQueue;

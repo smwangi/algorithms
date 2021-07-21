@@ -142,7 +142,7 @@ public class ImplementQueue {
     }
     
     /**
-     * Using once Stack with call stack
+     * Using one Stack with call stack
      * We can also use an implicit stack (call stack) and an actual stack for constructing a queue. The dequeue operation pops all elements
      * from the stack and stores them in the call stack. When the stack is left with a single item, remove and return that item, Finally, push
      * all elements back into the stack from the call stack as the recursion unfolds.
@@ -168,7 +168,7 @@ public class ImplementQueue {
             }
             // Pop an item from the stack
             T top  = s.pop();
-            // if the staack becomes empty, return the popped ite,
+            // if the stack becomes empty, return the popped ite,
             if (s.isEmpty()) {
                 return top;
             }

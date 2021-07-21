@@ -1,5 +1,3 @@
-package codes;
-
 import java.util.Arrays;
 
 /**
@@ -49,7 +47,8 @@ public class RotateArrayMatrix {
 
     /**
      * Approach:
-     * The approach is similar to Inplace rotate square matrix by 90 degrees | Set 1. The only thing that is different is to print the elements of cycle in clockwise direction
+     * The approach is similar to Inplace rotate square matrix by 90 degrees | Set 1.
+     * The only thing that is different is to print the elements of cycle in clockwise direction
      * i.e. An N x N matrix will have floor(N/2) square cycles.
      * For example, a 3 X 3 matrix will have 1 cycle. The cycle is formed by its 1st row, last column, last row, and 1st column.
      * For each square cycle, we swap the elements involved with the corresponding cell in the matrix in the clockwise direction. We just need a temporary variable for this.
@@ -103,9 +102,8 @@ public class RotateArrayMatrix {
         int colNum = a[0].length;
 
         int[][] temp = new int[rowNum][colNum];
-        for(int i =0; i<rowNum; i++){
-            for(int j=0; j<colNum; j++){
-
+        for (int i = 0; i < rowNum; i++) {
+            for (int j = 0; j < colNum; j++) {
                 temp[i][j] = a[rowNum-j-1][i];
             }
         }

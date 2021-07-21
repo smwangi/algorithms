@@ -1,4 +1,3 @@
-package codes;
 
 import java.util.Arrays;
 
@@ -61,16 +60,16 @@ public class BinarySearch2 {
 
     public static int runBinarySearchRecursively(int[] arrSorted,int key, int l, int r){
         int mid = (l+r)/2;
-        if(r < l){
+        if (r < l) {
             return -1;
         }
 
-        if(key == arrSorted[mid]){
+        if (key == arrSorted[mid]) {
             return mid;
-        }else if(key < arrSorted[mid]){
-            return runBinarySearchRecursively(arrSorted,key,l,mid-1);
-        }else {
-            return runBinarySearchRecursively(arrSorted,key,mid+1,r);
+        } else if (key < arrSorted[mid]) {
+            return runBinarySearchRecursively(arrSorted, key, l,mid-1);
+        } else {
+            return runBinarySearchRecursively(arrSorted, key,mid+1, r);
         }
     }
 }

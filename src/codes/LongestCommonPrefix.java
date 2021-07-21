@@ -56,6 +56,44 @@ public class LongestCommonPrefix {
         return result;
     }
     /**
+     * A simple solution is to consider each string and calculate its longest common prefix with the most common
+     * prefix of strings processed so far. The time complexity of this solution is O(N.M), where N is the total number
+     * of words and M is the maximum length of a word.
+     */
+    static String LCPStr(String x, String y) {
+        int i = 0, j = 0;
+        while (i < x.length() && j < y.length()) {
+            if (x.charAt(i) != y.charAt(j)) {
+                break;
+            }
+            i++; j++;
+        }
+        return x.substring(0, i);
+    }
+    static String findLCPStr(List<String> words) {
+        String prefix = words.get(0);
+        for (String word : words) {
+            prefix = LCPStr(prefix, word);
+        }
+        return prefix;
+    }
+    /**
+     * We can also use the Divide and Conquer technique for finding the longest common prefix (LCP). Like all divide-and-conquer
+     * algorithms, the idea is to divide the string into two smaller set and then recursively process those sets.
+     * This is similar to merge sort routine, except we find the LCP of the two halves instead of merging both halves.
+     */
+    static String LCPDivCon(String x, String y) {
+        int i = 0, j = 0;
+        while (i < x.length() && j < y.length()) {
+            if (x.charAt(i) != y.charAt(j)) {
+                break;
+            }
+            i++; j++;
+        }
+        return x.substring(0, i);
+    }
+    
+    /**
      *
      * Given an unsorted array of integers nums, return the length of the longest continuous increasing subsequence
      * (i.e. subarray).

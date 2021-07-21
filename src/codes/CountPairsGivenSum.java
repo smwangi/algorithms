@@ -51,8 +51,12 @@ public class CountPairsGivenSum {
      * A better solution is possible in O(n) time. Below is the Algorithm –
      *
      * Create a map to store frequency of each number in the array. (Single traversal is required)
-     * In the next traversal, for every element check if it can be combined with any other element (other than itself!) to give the desired sum. Increment the counter accordingly.
-     * After completion of second traversal, we’d have twice the required value stored in counter because every pair is counted two times. Hence divide count by 2 and return.
+     *
+     * In the next traversal, for every element check if it can be combined with any other element
+     * (other than itself!) to give the desired sum. Increment the counter accordingly.
+     *
+     * After completion of second traversal, we’d have twice the required value stored in counter because every pair is counted two times.
+     * Hence divide count by 2 and return.
      */
     static int getPairsCount2(int[]arr, int sum) {
         Map<Integer, Integer> map = new HashMap<>();
@@ -60,7 +64,7 @@ public class CountPairsGivenSum {
         //Store counts of all elements in the map
         for (int i = 0; i < n; i++) {
             // initializing value to 0, if key not found
-            if (map.containsKey(arr[i]))
+            if (!map.containsKey(arr[i]))
                 map.put(arr[i], 0);
             map.put(arr[i], map.get(arr[i]) + 1);
         }

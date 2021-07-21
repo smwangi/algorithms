@@ -25,9 +25,9 @@ public class MissingNumber {
         Arrays.sort(arr);
 
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i]+1 == arr[i+1])
+            if (arr[i] + 1 == arr[i+1])
                 continue;
-            else return arr[i]+1;
+            else return arr[i] + 1;
         }
         return 0;
     }
