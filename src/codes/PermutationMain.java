@@ -85,4 +85,19 @@ public class PermutationMain {
             }
         }
     }
+    static void recursivePermutation(char[] ch, int currentIndex) {
+        if (currentIndex == ch.length - 1)
+            System.out.println(String.valueOf(ch));
+        
+        for (int i = currentIndex; i < ch.length; i++) {
+            charSwap(ch, currentIndex, i);
+            recursivePermutation(ch, currentIndex + 1);
+            charSwap(ch, currentIndex, i);
+        }
+    }
+    static void charSwap(char[]chars, int i, int j) {
+        char temp = chars[i];
+        chars[i] = chars[j];
+        chars[j] = temp;
+    }
 }
