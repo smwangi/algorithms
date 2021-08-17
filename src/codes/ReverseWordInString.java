@@ -37,4 +37,37 @@ public class ReverseWordInString {
         
         return chars;
     }
+    
+    static String reverseWords(String s) {
+        if (s == null)
+            return null;
+        
+        char[] chars = s.toCharArray();
+        int n = chars.length;
+        //reverse the whole string
+        reverse(chars, 0, n - 1);
+        //reverse each word
+        reverseWord(chars, n);
+        return cleanSpace(chars, n);
+    }
+    
+    static void reverseWord(char[] chars, int n) {
+        int i = 0, j = 0;
+        while (i < n) {
+            while (i < j || i < n && chars[i] == ' ') i++;//skip spaces
+            while (j < i || i < n && chars[j] != ' ') j++;// skip non spaces
+            reverse(chars, i, j - 1);
+        }
+    }
+    
+    static String cleanSpace(char[] chars, int n) {
+        int i = 0, j = 0;
+        while (j < n) {
+            while (j < n && chars[j] == ' ') j++;//Skip spaces
+            while (j < n && chars[j] != ' ') chars[i++] = chars[j++]; //keep non spaces
+            while (j < n && chars[j] == ' ') j++; //skip spaces
+            if (j < n) chars[i++] = ' '; // keep only one space
+        }
+        return new String(chars).substring(0, i);
+    }
 }

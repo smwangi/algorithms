@@ -946,4 +946,20 @@ public class LinkedLists {
         }
         return head;
     }
+    //Deleting node from a singly linked list
+    Node deleteNode(Node head, int d) {
+        if (head == null)
+            return null;
+        Node n = head;
+        if (n.data == d)
+            return n.next; //Move head
+        while (n.next != null) {
+            if (n.next.data == d) {
+                n.next = n.next.next;
+                return head;//head didn't change
+            }
+            n = n.next;
+        }
+        return head;
+    }
 }
