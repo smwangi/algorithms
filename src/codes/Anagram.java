@@ -78,7 +78,8 @@ public class Anagram {
 
         List<Integer> result = new ArrayList<>();
 
-        if(s.length() == 0 || s==null)return result;
+        if(s.length() == 0 || s == null)
+            return result;
 
         int[] char_counts = new int[26];
         for(char c : p.toCharArray()){
