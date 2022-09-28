@@ -1,4 +1,3 @@
-package codes;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -29,5 +28,31 @@ public class HappyNumber {
             n = value;
         }
         return n == 1;
+    }
+    /**
+     * Instead of keeping track of just one value in the chain, we keep track of 2, called slow number and fast runner.
+     * At each step of the algorithm, the slow runner goes forward by 1 number in the chain, and the fast runner goes
+     * forward by 2 numbers (nested calls to the getNext(n) function
+     * If n is a happy number i.e. there is no cycle, then the fast runner will eventually get to 1 before the slow runner.
+     * If n is not a happy number, then eventually the fast runner and the slow runner will be on the same number.
+     */
+    private int getNext(int n) {
+        int totalSum = 0;
+        while (n > 0) {
+            int d = n % 10;
+            n = n / 10;
+            totalSum += d * d;
+        }
+        return totalSum;
+    }
+
+    boolean isHappy2(int n) {
+        int slowRunner = n;
+        int fastRunner = getNext(n);
+        while (fastRunner != 1 && slowRunner != fastRunner) {
+            slowRunner = getNext(n);
+            fastRunner = getNext((getNext(n)));
+        }
+        return fastRunner == 1;
     }
 }
