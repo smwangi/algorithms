@@ -1,4 +1,5 @@
-package codes;
+
+import static java.lang.System.out;
 
 import java.util.*;
 
@@ -15,6 +16,8 @@ public class StringBasedAlgorithms {
        permutation(per.length(),per.toCharArray());
        permutation("",per);
        System.out.println("Palindrome: "+isPalindrome("radar"));
+
+
     }
 
     /**

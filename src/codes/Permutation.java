@@ -9,6 +9,7 @@ public class Permutation<T> {
         Integer[] arr = {1,2,3,};
         permutation(3,arr);
         int[] a = new int[]{1,2,3};
+        List<Integer> arrList = new ArrayList<>(Arrays.asList(1, 2, 3));
         
         Permutation<Integer> permutation = new Permutation<>();
         permutation.subsets(a).forEach(x -> System.out.print(x+" "));
@@ -16,18 +17,20 @@ public class Permutation<T> {
         permutation.permute(a).forEach(x -> System.out.print(x+" "));
         System.out.println();
         permutation.permute2(a).forEach(x -> System.out.print(x+" "));
+        System.out.println();
+        getPermutations(arrList).forEach(x -> System.out.println(x + " <> "));
     }
     //Recursive
-    static <T> void permutation(int n,T[]arr){
+    static <T> void permutation(int n, T[]arr) {
 
-        if(n ==1){
+        if (n ==1) {
             System.out.println(Arrays.toString(arr));
-        }else{
-            for(int i=0; i < n- 1;i++){
+        } else {
+            for (int i=0; i < n- 1;i++) {
                 permutation(n-1, arr);
-                if(n%2==0){
+                if (n%2  == 0) {
                     swap(arr, i, n-1);
-                }else{
+                } else {
                     swap(arr, 0, n-1);
                 }
             }
@@ -39,6 +42,10 @@ public class Permutation<T> {
         T temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
+    }
+    
+    static void permuteIteratively(int n, int[] arr) {
+    
     }
     
     public List<List<Integer>> subsets(int[] nums) {
@@ -127,5 +134,25 @@ public class Permutation<T> {
         int temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
+    }
+    
+    public static List<List<Integer>> getPermutations(List<Integer> array) {
+        List<List<Integer>> result = new ArrayList<>();
+        permute(array, new ArrayList<Integer>(), result);
+        return result;
+    }
+    
+    private static void permute(List<Integer> array, List<Integer> currentPermutations, List<List<Integer>> permutations) {
+        if (array.size() == 0 && currentPermutations.size() > 0) {
+            permutations.add(currentPermutations);
+        } else {
+            for (int i = 0; i < array.size(); i++) {
+                List<Integer> newArr = new ArrayList<>(array);
+                newArr.remove(i);
+                List<Integer> newPermutation = new ArrayList<>(currentPermutations);
+                newPermutation.add(array.get(i));
+                permute(newArr, newPermutation, permutations);
+            }
+        }
     }
 }

@@ -53,9 +53,11 @@ public class ProductExceptSelf {
             // output_arr[i - 1] already contains the product of elements to the left of 'i - 1'
             // Simply multiplying it with nums[i - 1] would give the product of all
             // elements to the left of index 'i'
+            System.out.println("i: "+i+ " nums[i-1]: "+nums[i-1]+" output_arr[i-1]: "+output_arr[i-1]);
             output_arr[i] = nums[i-1] * output_arr[i-1];
         }
-
+        Arrays.stream(output_arr).boxed().forEach(x -> System.out.print(x+", "));
+        System.out.println();
         // R contains the product of all the elements to the right
         // Note: for the element at index 'length - 1', there are no elements to the right,
         // so the R would be 1

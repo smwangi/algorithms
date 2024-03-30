@@ -30,6 +30,7 @@ public class MaxProductSubArray {
         int[] arr = {-2, 3,-4};
         System.out.println(maxProduct(arr));
         System.out.println("Max Product 2: "+maxProduct2(arr));
+        System.out.println("Max Product 3: "+maxProduct3(arr));
     }
     public static int maxProduct(int[] nums) {
         int[] posProduct = new int[nums.length];
@@ -76,6 +77,29 @@ public class MaxProductSubArray {
                 max = Math.max(nums[i], nums[i] * min);
                 min = Math.min(nums[i], nums[i] * temp);
             }
+            ans = Math.max(ans, max);
+        }
+        return ans;
+    }
+    
+    static int maxProduct3(int[] nums) {
+        int n = nums.length;
+        int ans = nums[0];
+        if (n == 1) {
+            return nums[0];
+        }
+        
+        int max = ans;
+        int min = ans;
+        
+        for (int i = 1; i < n; i++) {
+            if (nums[i] < 0) {
+                int temp = max;
+                max = min;
+                min = temp;
+            }
+            max = Math.max(nums[i] * max, nums[i]);
+            min = Math.min(nums[i] * min, nums[i]);
             ans = Math.max(ans, max);
         }
         return ans;

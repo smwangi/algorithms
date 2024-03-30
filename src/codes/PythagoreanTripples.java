@@ -25,11 +25,9 @@ public class PythagoreanTripples {
 
         //Assuming a is the shortest side.
         Arrays.sort(array);
-        for (int i = 0; i < array.length;i++)
+        for (int i = 0; i < array.length;i++) {
             array[i] = array[i]*array[i];
-
-
-
+        }
         /*for(int i = 0; i< N;i++){
             int left = N-2, right = N-1;
             System.out.println("Left: "+left+" Right: "+right);

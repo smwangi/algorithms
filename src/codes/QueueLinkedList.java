@@ -65,12 +65,11 @@ public class QueueLinkedList {
            if (front == null) {
                //initialize both front and rear
                front = node;
-               rear = node;
            } else {
                // update rear
                rear.next = node;
-               rear = node;
            }
+           rear = node;
        }
        // utility function to return the top element in a queue
        public int peek() {

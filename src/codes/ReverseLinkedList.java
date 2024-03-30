@@ -122,4 +122,17 @@ public class ReverseLinkedList {
             node = node.next;
         }
     }
+    //Ignore the head, ignore the tail );
+    Node reverseLinkedList(Node head) {
+        Node p1 = null, p2 = head, p3 = null;
+        
+        while (p2 != null) {
+            p3 = p2.next;
+            p2.next = p1;
+            p1 = p2;
+            p2 = p3;
+        }
+        head = p1;
+        return head;
+    }
 }

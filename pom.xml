@@ -2,8 +2,12 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>algorithm</groupId>
   <artifactId>algorithms-java</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>javaAlgorithms</name>
+    <packaging>pom</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>unittest</module>
+    </modules>
+    <name>javaAlgorithms</name>
     <properties>
         <maven.compiler.target>11</maven.compiler.target>
         <maven.compiler.source>11</maven.compiler.source>

@@ -25,7 +25,7 @@ import java.util.Stack;
  *     For a normal Stack there are three functions: push(), pop(), peek().
  *     If we have to introduce another function called min(). It has to return the minimum element that is present in the stack at any period of time.
  *     What we are going to do is. Initialize a min variable whose scope is global. So that the functions in the stack can access it at any period of time.
- *     Push Operation(): Introduce a if condition.
+ *     Push Operation(): Introduce an if condition.
  *     If the value of the current pushed element is less than the minimum present in the stack.
  *     Push the existing minimum element into the stack. Make the current element as the minimum element Followed by another push which will enter the current element.
  *     This is done in order to make the minimum element be always present as the last element in the stack and second last element to be the second last minimum, so on.

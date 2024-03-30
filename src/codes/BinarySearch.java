@@ -1,6 +1,3 @@
-
-import java.util.Arrays;
-
 public class BinarySearch {
 
     public static void main(String[] args) {
@@ -9,8 +6,8 @@ public class BinarySearch {
         int l  = 0;
         int r = arr.length-1;
         int x = 3;
-        int result = binarySrchRecursive(arr,l,r,x);
-        int result2 = binarySrchWhile(arr,x);
+        int result = binarySearchRecursive(arr,l,r,x);
+        int result2 = binarySearchWhile(arr,x);
         int result3 = binarySearch(arr,x);
         if(result2 == -1)
             System.out.println("Element not found: ");
@@ -20,7 +17,7 @@ public class BinarySearch {
         //System.out.println(Arrays.binarySearch(arr,x));
     }
 
-    static int binarySrchRecursive(int[] arr, int l, int r, int x){
+    static int binarySearchRecursive(int[] arr, int l, int r, int x){
         if(r > l){
             int mid = l+(r - l)/2;
 
@@ -30,15 +27,15 @@ public class BinarySearch {
 
             //If element is smaller than mid, then it can be present at left subarray
             if(arr[mid] > x)
-                return binarySrchRecursive(arr,l,mid -1,x);
+                return binarySearchRecursive(arr,l,mid -1,x);
 
-            return binarySrchRecursive(arr,mid +1,r,x);
+            return binarySearchRecursive(arr,mid +1,r,x);
         }
 
         return  -1;
     }
 
-    static int binarySrchWhile(int[] arr, int x){
+    static int binarySearchWhile(int[] arr, int x){
 
         int l = 0, r = arr.length-1;
         while (l <= r){
