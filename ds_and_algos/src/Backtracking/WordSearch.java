@@ -1,4 +1,4 @@
-package Backtracking;
+package backtracking;
 /**
  * Word search algorithm is used to find if a given word exists in a 2D grid of Characters. It is commonly used in puzzles and 
  * games like crosswords and word searches.

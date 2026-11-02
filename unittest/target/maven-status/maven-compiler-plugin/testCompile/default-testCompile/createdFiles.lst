@@ -1,7 +1,7 @@
-ReverseKElementsInQueueTest.class
-BacktrackingTests/WordSearchTests.class
-MaxSubArraySumTest.class
-GraphPathTest.class
-MyCalendarTest.class
-DiameterBinaryTree.class
-StackUsingTwoQueuesTest.class
+stacksqueues/StackUsingTwoQueuesTest.class
+backtracking/WordSearchTests.class
+design/MyCalendarTest.class
+stacksqueues/ReverseKElementsInQueueTest.class
+trees/DiameterBinaryTree.class
+arrays/MaxSubArraySumTest.class
+graphs/GraphPathTest.class

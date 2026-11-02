@@ -1,7 +1,7 @@
-/Users/samwan/projects/algorithms/unittest/src/test/java/StackUsingTwoQueuesTest.java
-/Users/samwan/projects/algorithms/unittest/src/test/java/DiameterBinaryTree.java
-/Users/samwan/projects/algorithms/unittest/src/test/java/BacktrackingTests/WordSearchTests.java
-/Users/samwan/projects/algorithms/unittest/src/test/java/MyCalendarTest.java
-/Users/samwan/projects/algorithms/unittest/src/test/java/MaxSubArraySumTest.java
-/Users/samwan/projects/algorithms/unittest/src/test/java/GraphPathTest.java
-/Users/samwan/projects/algorithms/unittest/src/test/java/ReverseKElementsInQueueTest.java
+/Users/samwan/projects/algorithms/unittest/src/test/java/trees/DiameterBinaryTree.java
+/Users/samwan/projects/algorithms/unittest/src/test/java/stacksqueues/ReverseKElementsInQueueTest.java
+/Users/samwan/projects/algorithms/unittest/src/test/java/backtracking/WordSearchTests.java
+/Users/samwan/projects/algorithms/unittest/src/test/java/design/MyCalendarTest.java
+/Users/samwan/projects/algorithms/unittest/src/test/java/arrays/MaxSubArraySumTest.java
+/Users/samwan/projects/algorithms/unittest/src/test/java/graphs/GraphPathTest.java
+/Users/samwan/projects/algorithms/unittest/src/test/java/stacksqueues/StackUsingTwoQueuesTest.java
