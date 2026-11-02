@@ -1,4 +1,3 @@
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
@@ -26,6 +25,6 @@ public class ReverseKElementsInQueueTest {
         ReverseKElemInQueue reverseKElemInQueue = new ReverseKElemInQueue();
         reverseKElemInQueue.reverseKElements(q, k);
 
-        //Assert.assertEquals(expected, q);
+        //Assertions.assertEquals(expected, q);
     }
 }

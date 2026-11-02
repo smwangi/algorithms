@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class MyCalendarTest {
@@ -6,6 +7,6 @@ public class MyCalendarTest {
     public void CanBookCalendar() {
         MyCalendar obj = new MyCalendar();
         obj.book(10, 15);
-        boolean b1 = obj.book(16, 30);
+        Assertions.assertTrue(obj.book(16, 30));
     }
 }

@@ -1,4 +1,4 @@
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class StackUsingTwoQueuesTest {
@@ -10,6 +10,6 @@ public class StackUsingTwoQueuesTest {
         twoQueues.push(2);
         twoQueues.push(3);
 
-        Assert.assertEquals(3, twoQueues.pop());
+        Assertions.assertEquals(3, twoQueues.pop());
     }
 }

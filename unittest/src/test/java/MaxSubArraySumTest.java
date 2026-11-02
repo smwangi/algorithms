@@ -1,4 +1,4 @@
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class MaxSubArraySumTest {
@@ -10,6 +10,6 @@ public class MaxSubArraySumTest {
         MaxSubArraySum maxSubArraySumTest = new MaxSubArraySum();
         int sum = maxSubArraySumTest.printMaxSubArrSum(arr);
 
-        Assert.assertEquals(6, sum);
+        Assertions.assertEquals(6, sum);
     }
 }
