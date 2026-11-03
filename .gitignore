@@ -1,2 +1,11 @@
 out/
 *.class
+target/
+
+# IDE files (generated locally)
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.DS_Store
