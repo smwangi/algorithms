@@ -401,7 +401,6 @@ class ArrayQuestions {
      * Starting from 1, the missing values are 5 and 6.
      */
     List<Integer> findDisappearedNumber(int[] nums) {
-        //System.out.println();
         for (int i : nums) {
             int index = Math.abs(i);
             if (nums[index - 1] > 0)

@@ -5,7 +5,6 @@ import java.util.Arrays;
 public class InsertionSort {
     public static void main(String[] args) {
         int[] data = { 9, 5, 1, 4, 3 };
-        //is.insertionSort(data);
         insertionSort2(data);
         System.out.println("Sorted Array in Ascending Order: ");
         System.out.println(Arrays.toString(data));

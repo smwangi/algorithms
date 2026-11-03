@@ -35,8 +35,6 @@ public class MultiplyString {
             for (int j = 0; j < num2.length(); j++) {
                 ans[i + j] += (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
                 System.out.print(ans[i + j]+" i "+i+" j "+j+" <end> ");
-                 //System.out.println(num1.charAt(i) - '0');
-                 //System.out.println(num2.charAt(i) - '0');
                 System.out.println();
             }
         }

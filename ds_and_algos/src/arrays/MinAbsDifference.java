@@ -51,7 +51,6 @@ public class MinAbsDifference {
         int min = Integer.MAX_VALUE;
 
         Arrays.sort(arr);
-        //for (int i = 0; i < arr.length; i++){
 
             for(int j = 1;j< arr.length; j ++){
                 int difference = Math.abs(arr[j] - arr[j-1]);
@@ -61,7 +60,6 @@ public class MinAbsDifference {
                     System.out.println("Diff2 "+difference+" min2 "+min);
                     result.clear();
 
-                    //System.out.println(arr[j]+" - "+arr[j-1]+" = "+difference);
                     result.add(Arrays.asList(arr[j-1],arr[j]));
                 }else if(difference == min){
                     result.add(Arrays.asList(arr[j-1],arr[j]));
@@ -70,7 +68,6 @@ public class MinAbsDifference {
 
             }
             System.out.println("MIN "+min);
-        //}
 
         return result;
     }

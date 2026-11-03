@@ -6,7 +6,6 @@ import java.util.Arrays;
 public class MissingLetter {
 
     public static void main(String[] args) {
-        //char[] arr = {'O','Q','R','S'};
         char[] arr = {'a','b','c','d','f'};
         System.out.println("Method 0: "+findMissingLetter(arr));
         System.out.println("Method 1: "+findMissingLetter1(arr));
@@ -17,11 +16,8 @@ public class MissingLetter {
     public static char findMissingLetter(char[] array)
     {
         int[]arr = new int[array.length];
-        //System.out.print((char)(15+'A'));
         char a = Character.isUpperCase(array[0]) ? 'A' :'a';
-        //for(char c : array){
         for(int i = 0;i<array.length; i ++){
-           // c = Character.toLowerCase(c);
             System.out.print(array[i]- a +" ");
             arr[i] = array[i] - a;
         }

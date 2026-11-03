@@ -37,8 +37,6 @@ public class TestJava {
         var names = Stream.of("sam","wan","mwan");
         names.map(n -> n.toUpperCase()).forEach(System.out::println);
 
-        //Optional<String> opt = Optional.of("test");
-       // assertEquals(Optional.of("TEST"),opt.map(String::toUpperCase));
         long[] arr = {1,3,5,7,9};
         minMax(arr);
     }

@@ -92,7 +92,6 @@ public class FileSystem {
             for (Map.Entry<Integer, Entity> f : fs.entrySet()) {
                 Entity e = f.getValue();
                 if (e.fileType == FileType.Directory) {
-                    // total += diskUsage(f);
                 } else {
                     total += e.size;
                 }

@@ -9,7 +9,6 @@ public class ValidatePin {
         System.out.println( validatePin("a234"));
     }
     public static boolean validatePin(String pin) {
-        //System.out.println(pin.length());
 
         /*if(pin.chars().allMatch(Character::isDigit) && (pin.length() == 4 || pin.length() == 6)){
             return true;
@@ -17,7 +16,6 @@ public class ValidatePin {
             return false;
         }*/
         return pin.matches("\\d{4}|\\d{6}");
-        //return pin.matches("[0-9]{4}|[0-9]{6}");
 
     }
 }

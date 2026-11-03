@@ -81,7 +81,6 @@ public class MigratoryBirds {
                 freq.put(x,1);
             }
         });
-        //freq.forEach((x,y)-> System.out.println(x.intValue()+" "+y.intValue()));
         Integer max = freq.entrySet().stream().max(Map.Entry.comparingByValue()).get().getKey();
         return max;
     }

@@ -82,7 +82,6 @@ public class RotateArrayMatrix {
      * @return
      */
     int[][] rotateImage(int[][] a) {
-        //int[][]res = new int[a.length][];
         /*int N = 4;//a.length;
 
         for (int i = 0; i < N / 2; i++)

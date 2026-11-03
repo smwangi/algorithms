@@ -31,7 +31,6 @@ public class GraphValidPath {
             map.get(edge[1]).add(edge[0]);
         }
 
-        //return bfs(map, source, destination);
         dfs(map, visited, source, destination);
         return found;
     }

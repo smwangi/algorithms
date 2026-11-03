@@ -96,7 +96,6 @@ public class IO_NIO {
         }
 
         String login = c.readLine("Enter password");
-        //char[] password = c.readPassword("enter password");
 
         c.format("Passwords do not match Try again.%n", login);
     }

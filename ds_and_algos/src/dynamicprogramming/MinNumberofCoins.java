@@ -12,8 +12,6 @@ public class MinNumberofCoins {
 
     static int minNumOfCoins(int[] coinList, int v){
 
-        //if(coinList.length == 1 && coinList[0] < v)
-          //  return -1;
         //num coins will be storing the min number of coins required for i value
         //numCoins[v] will have result
 
@@ -34,10 +32,7 @@ public class MinNumberofCoins {
             for (int j = 0; j < coinList.length; j++){
                 System.out.print(" "+coinList[j]);
                 if(coinList[j] <= i){
-                    //System.out.print(" "+coinList[j]);
-                    //System.out.println();
                     tempCoins = coins[i - coinList[j]];
-                    //System.out.print(" "+tempCoins);
                     if(tempCoins != Integer.MAX_VALUE && tempCoins + 1 < coins[i])
                         coins[i] = tempCoins + 1;
 
@@ -46,6 +41,5 @@ public class MinNumberofCoins {
             }
         }
         return coins[v] == Integer.MAX_VALUE ? -1 : coins[v];
-       // Arrays.stream(table).forEachOrdered(System.out::println);
     }
 }

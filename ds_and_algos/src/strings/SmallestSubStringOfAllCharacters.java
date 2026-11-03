@@ -25,12 +25,10 @@ public class SmallestSubStringOfAllCharacters {
 
         for(int j = 0; j <= str.length()-1;j++){
             char tailChar = str.charAt(j);
-            //System.out.println(str.charAt(j));
             //Skip all characters not in arr
 
             if(!countMap.containsKey(tailChar))continue;
             int tailCount = countMap.get(tailChar);
-            //System.out.println(tailChar+" "+tailCount);
             if(tailCount == 0)
                 uniqueCounter +=1;
 

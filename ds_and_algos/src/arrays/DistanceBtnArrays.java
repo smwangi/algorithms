@@ -14,9 +14,6 @@ public class DistanceBtnArrays {
         for (int i =0; i< arr1.length; i++){
 
             for (int j = 0; j < arr2.length;j++){
-                //System.out.println(Math.abs(arr1[i] - arr2[j]));
-                //System.out.format("%d - %d = %d",arr1[i],arr2[j],Math.abs(arr1[i] - arr2[j]));
-                //System.out.println();
                 if( Math.abs(arr1[i] - arr2[j]) <= d )
                     break;
                 else{

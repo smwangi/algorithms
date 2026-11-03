@@ -53,7 +53,6 @@ public class PythagoreanTripples {
         Arrays.stream(array).forEach(t -> System.out.print(t+" "));
         System.out.println();
         for(int i = N-1;i >=2;i--){
-           // System.out.println("i "+i+" N-1 "+n_1+" arr[i] "+array[i]);
             // To find the other two elements, start two index
             // variables from two corners of the array and move
             // them toward each other

@@ -37,8 +37,6 @@ public class BinaryTreeDiameter {
     }
 
     public int inorder(TreeNode root) {
-        //height(root, 0, 0);
-        //inorderHelper(root);
         heightOfBinaryTree(root);
         return -1;
     }

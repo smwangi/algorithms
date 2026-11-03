@@ -54,7 +54,6 @@ public class ThreeSum {
         Set<List<Integer>> res = new HashSet<>();
 
         for(int i = 0; i < nums.length;i++){
-            //int current = nums[i];
             int l = i + 1;
             int r =  nums.length -1;
             while (l < r) {

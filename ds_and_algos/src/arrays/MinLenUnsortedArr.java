@@ -23,6 +23,5 @@ public class MinLenUnsortedArr {
     }
     static void printUnsorted(int[] arr, int n) {
         // step 1(a) of above algo
-       // for (s = 0 )
     }
 }

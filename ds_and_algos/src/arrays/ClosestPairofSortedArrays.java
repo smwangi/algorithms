@@ -31,9 +31,6 @@ public class ClosestPairofSortedArrays {
       int  ar1[] = {1, 4, 5, 7};
       int  ar2[] = {10, 20, 30, 40};
       int x = 32;
-      //int  ar1[] = {1, 4, 5, 7};
-      // int ar2[] = {10, 20, 30, 40};
-      //int x = 50;
 
 
       closestPair(ar1,ar2,x);
@@ -125,8 +122,6 @@ public class ClosestPairofSortedArrays {
         for (int i : arr)
             queue.offer(i);
 
-        //for (int i = 0; i < n; i++)
-        //    System.out.println(queue.poll());
         while (n >0){
             System.out.println(queue.poll());
             n--;

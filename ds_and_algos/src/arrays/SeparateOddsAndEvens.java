@@ -31,7 +31,6 @@ public class SeparateOddsAndEvens {
      * @param arr
      */
     private static void separate(int[] arr){
-        //int[] res = new int[arr.length];
         int l = 0, r = arr.length-1;
         while (l < r){
             if(arr[r] % 2 == 0){
@@ -47,7 +46,6 @@ public class SeparateOddsAndEvens {
             r--;
         }
 
-       // return res;
     }
     //Alternative
     public static int[] arrange(int [] arrA){

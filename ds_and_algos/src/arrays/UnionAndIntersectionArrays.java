@@ -52,10 +52,8 @@ public class UnionAndIntersectionArrays {
         while (i < m && j < n){
 
             if(arr1[i] < arr2[j]){
-               // i++;
                 System.out.print(arr1[i++]+" ");
             }else  if(arr2[j] < arr1[i]){
-                //j++;
                 System.out.print(arr2[j++]+" ");
             }else{
                 System.out.print(arr2[j++]+" ");
@@ -121,7 +119,6 @@ public class UnionAndIntersectionArrays {
                 set2.add(nums2[i]);
             }
         }
-        //set1.forEach(x->System.out.print(x+" "));
         int[] a = new int[set2.size()];
         int i = 0;
         for(int x : set2) {

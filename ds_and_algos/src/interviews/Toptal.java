@@ -7,8 +7,6 @@ public class Toptal {
 
     public static void main(String[] args) {
 
-       // solution(s);
-       // solution2("ABBBCCDDCCC", 3);
         String r = "AAAAAAAAAAABXXAAAAAAAAAA";//"ABCDDDEFG";//"ABBBCCDDCCC";
         int l =3;
         removeLetter(r,l);
@@ -25,7 +23,6 @@ public class Toptal {
         for(int i = 1; i < n; i++){
 
             for(int j = i+1;j<n;j++){
-                //if(S.charAt(i) == 'a' && S.charAt(j))
                 for(int k = j+1;k < n;k++){
                     String s1 = "", s2 = "", s3 = "";
                     try
@@ -38,11 +35,9 @@ public class Toptal {
                     }
                     if(s1.indexOf('a') != -1 | s2.indexOf('a') != -1 | s3.indexOf('a') != 1)
                         count++;
-                    //System.out.println(s1+" "+s2+" "+s3);
                 }
             }
         }
-       // System.out.println(count);
         return count;
     }
 
@@ -56,7 +51,6 @@ public class Toptal {
             char c = S.charAt(i);
             int count = 1;
             for(int j = i+K;j<n;j++){
-                //System.out.print(S.charAt(j)+" ");
                 if(S.charAt(i) ==  S.charAt(j)){
                     count++;
 
@@ -65,18 +59,15 @@ public class Toptal {
             }
 
             if(count > 1){
-                //i+=count;
                 sb.append(count).append(c);
             }else{
                 sb.append(c);
-                //i++;
             }
             if(sb.length() < len)
                 len = sb.length();
 
             System.out.print(c+""+count);
         }
-        //System.out.println(sb.toString());
         return len;
     }
 

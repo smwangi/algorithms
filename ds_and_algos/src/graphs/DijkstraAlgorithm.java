@@ -151,7 +151,6 @@ public class DijkstraAlgorithm {
         }
 
         for (int i = 0; i < node_count; i++) {
-            //System.out.println("Distance of vertex " + i + " from the source is " + dist.get(i));
             System.out.printf("Source Node(%d) -> Destination Node(%d) : %d%n", source_node, i, dist.get(i));
         }
     }

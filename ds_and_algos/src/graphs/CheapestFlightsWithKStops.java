@@ -39,8 +39,6 @@ public class CheapestFlightsWithKStops {
     public static void main(String[] args) {
 
         CheapestFlightsWithKStops cheapestFlightsWithKStops = new CheapestFlightsWithKStops();
-        //int n = 3,src = 0, dst=2,K=1;
-        //int[][] flights = {{0,1,100},{1,2,100},{0,2,500}};
 
         int n = 3,src = 0, dst=2,K=0;
         int[][] flights = {{0,1,100},{1,2,100},{0,2,500}};

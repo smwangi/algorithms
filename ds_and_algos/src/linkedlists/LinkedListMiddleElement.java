@@ -20,7 +20,6 @@ public class LinkedListMiddleElement {
         middleElement.push(6);
         middleElement.push(7);
         middleElement.printMiddle(middleElement.head);
-        //middleElement.printMiddle2();
     }
     /**
      * Method 1:

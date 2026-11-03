@@ -20,7 +20,6 @@ public class ValidAnagram {
 
         for(int i = 0; i < t.length();i++){
             char c = t.charAt(i);
-            //System.out.println(c+":"+table.containsKey(c));
             if(table.get(c) == null)
                 return false;
             else if(table.get(c) == 1)

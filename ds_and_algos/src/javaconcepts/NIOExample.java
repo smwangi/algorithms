@@ -54,7 +54,6 @@ public class NIOExample {
         }
         PrintFiles printFiles=new PrintFiles();
         Files.walkFileTree(test,printFiles);
-        //printFiles.postVisitDirectory(test,BasicFileAttributes.class);
     }
 
     /**

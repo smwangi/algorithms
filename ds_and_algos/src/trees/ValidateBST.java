@@ -69,7 +69,6 @@ public class ValidateBST {
             }
         System.out.println(prev+" <> "+root.val);
         prev = root.val;
-        //System.out.println(prev+" <> "+root.val);
         inOrder(root.right);
     }
     

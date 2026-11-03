@@ -18,7 +18,6 @@ public class CountSmaller {
             for (int j=i+1; j < nums.length; j++){
                 if(nums[j] < nums[i]  )
                     ++small;
-                //System.out.println(nums[j]);
             }
             smalls.add(small);
         }

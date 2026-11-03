@@ -45,8 +45,6 @@ public class LinkedLists {
         head.next.next.next.next.next.next.next =
                 new LinkedLists().new ListNode<>(8);
     
-        //head = deleteKthNode(head, k);
-    
         displayList(head);
         
         Node headSearch = null;

@@ -52,10 +52,8 @@ public class JavaStackBalancedBrackets {
             char upperElem = 0;
             String input=sc.next();
             //Complete the code
-            //System.out.println(input);
             //Arrays.toString(arr)
             for(int i = 0; i < input.length(); i++){
-                //System.out.println(input.charAt(i));
                 if(!stack.isEmpty()){
                     upperElem = stack.peek();
                 }

@@ -32,30 +32,21 @@ public class FindAnagrams {
         int n = s.length();
 
         for(int i = m; i < n; i++){
-           // System.out.println(i+" "+m+" "+Arrays.toString(sLen));
             if(Arrays.equals(sLen,pLen))
                 result.add(i-m);
 
             //cbaeb
-            //System.out.println(Arrays.toString(sLen));
             sLen[s.charAt(i)-'a']++;
-            //System.out.println(Arrays.toString(sLen));
 
-            //System.out.println(i+" "+(s.charAt(i)-'a'));
             sLen[s.charAt(i-m)-'a']--;
-           // System.out.println(Arrays.toString(sLen));
-            //break;
         }
         //Sliding window and Frequency table
         //right is ending boundary
 
 
-        //.stream(charCounts).forEachOrdered(x -> System.out.print(" "+x));
         /*while (right < s.length()) {
             //Example: charCount[s.charAt(0)-'a']
-            //System.out.println(s.charAt(right++));
             if(charCounts[s.charAt(right++)-'a']-- >= 1 ){
-                //System.out.print(" "+count);
                 count --;
 
             }
