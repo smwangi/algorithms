@@ -11,7 +11,6 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="algorithms" target="11" />
-      <module name="unittest" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IRT", "..\IRT\IRT.csproj", "{4ED38B68-2046-424E-A8EA-DE6155BB89B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IRTool", "..\IRTool\IRTool.csproj", "{96BDC66F-3167-4C4D-9F55-DF3AB84B8AE1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4ED38B68-2046-424E-A8EA-DE6155BB89B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ED38B68-2046-424E-A8EA-DE6155BB89B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ED38B68-2046-424E-A8EA-DE6155BB89B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ED38B68-2046-424E-A8EA-DE6155BB89B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96BDC66F-3167-4C4D-9F55-DF3AB84B8AE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96BDC66F-3167-4C4D-9F55-DF3AB84B8AE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96BDC66F-3167-4C4D-9F55-DF3AB84B8AE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96BDC66F-3167-4C4D-9F55-DF3AB84B8AE1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
