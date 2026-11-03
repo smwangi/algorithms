@@ -1,17 +1,29 @@
 package arrays;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-public class MaxSubArraySumTest {
+import java.util.stream.Stream;
 
-    @Test
-    public void TestMaxSubArrSum() {
-        int[] arr = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-        MaxSubArraySum maxSubArraySumTest = new MaxSubArraySum();
-        int sum = maxSubArraySumTest.printMaxSubArrSum(arr);
+class MaxSubArraySumTest {
 
-        Assertions.assertEquals(6, sum);
+    static Stream<Arguments> scenarios() {
+        return Stream.of(
+                Arguments.of(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}, 6),
+                Arguments.of(new int[]{5}, 5),
+                Arguments.of(new int[]{-1, -2}, -1),
+                Arguments.of(new int[]{-3, -1, -2}, -1),
+                Arguments.of(new int[]{1, 2, 3}, 6),
+                Arguments.of(new int[]{5, -9, 6}, 6)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("scenarios")
+    void findsLargestContiguousSum(int[] input, int expected) {
+        assertEquals(expected, new MaxSubArraySum().printMaxSubArrSum(input));
     }
 }

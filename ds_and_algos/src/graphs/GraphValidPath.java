@@ -6,9 +6,10 @@ public class GraphValidPath {
     private boolean found = false;
     public boolean validPath(int n, int[][] edges, int source, int destination) {
         // Edge Cases
-        if (edges.length == 0 || source == destination || n == 1) {
+        if (source == destination) {
             return true;
         }
+        found = false;
 
         Map<Integer, List<Integer>> map = new HashMap<>();
         boolean[] visited = new boolean[n];
@@ -59,7 +60,7 @@ public class GraphValidPath {
         }
         visited[source] = true;
 
-        for (int neig : map.get(source)) {
+        for (int neig : map.getOrDefault(source, List.of())) {
             if (neig == dest) {
                 found = true;
                 break;

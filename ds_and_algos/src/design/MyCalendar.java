@@ -11,11 +11,6 @@ public class MyCalendar {
     public boolean book(int start, int end) {
         Integer lessThanStart = map.floorKey(start);
 
-        if (lessThanStart != null) {
-            int v = map.get(lessThanStart).intValue();
-            System.out.println(v);
-        }
-
         if (lessThanStart != null && map.get(lessThanStart) > start) {
             return false;
         }

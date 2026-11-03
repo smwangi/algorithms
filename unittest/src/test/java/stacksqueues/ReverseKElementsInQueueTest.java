@@ -1,32 +1,31 @@
 package stacksqueues;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.LinkedList;
-import java.util.Queue;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class ReverseKElementsInQueueTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    @Test
-    public void canReverseKElementsInQueue() {
-        int k = 3;
-        Queue<Integer> q = new LinkedList<>();
-        q.add(1);
-        q.add(2);
-        q.add(3);
-        q.add(4);
-        q.add(5);
+class ReverseKElementsInQueueTest {
 
-//        Queue<Integer> expected = new LinkedList<>();
-//        q.add(3);
-//        q.add(2);
-//        q.add(1);
-//        q.add(4);
-//        q.add(5);
+    static Stream<Arguments> scenarios() {
+        return Stream.of(
+                Arguments.of(List.of(1, 2, 3, 4, 5), 3, List.of(3, 2, 1, 4, 5)),
+                Arguments.of(List.of(1, 2, 3, 4, 5), 5, List.of(5, 4, 3, 2, 1)),
+                Arguments.of(List.of(1, 2, 3, 4, 5), 1, List.of(1, 2, 3, 4, 5)),
+                Arguments.of(List.of(1, 2, 3, 4, 5), 0, List.of(1, 2, 3, 4, 5)),
+                Arguments.of(List.of(7), 1, List.of(7))
+        );
+    }
 
-        ReverseKElemInQueue reverseKElemInQueue = new ReverseKElemInQueue();
-        reverseKElemInQueue.reverseKElements(q, k);
-
-        //Assertions.assertEquals(expected, q);
+    @ParameterizedTest
+    @MethodSource("scenarios")
+    void reversesFirstKElements(List<Integer> input, int k, List<Integer> expected) {
+        LinkedList<Integer> queue = new LinkedList<>(input);
+        assertEquals(expected, new ReverseKElemInQueue().reverseKElements(queue, k));
     }
 }

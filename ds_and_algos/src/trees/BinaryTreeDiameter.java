@@ -14,20 +14,22 @@ public class BinaryTreeDiameter {
      * Calculate diameter using above.
      * return height of current node to previous recursive call.
      */
+    private int diameter;
+
     public  int diameterOfBinaryTree(TreeNode root) {
-        int diameter = Integer.MIN_VALUE;
-        heightOfBinaryTree(root, diameter);
+        diameter = 0;
+        heightOfBinaryTree(root);
         return diameter;
     }
 
-    private int heightOfBinaryTree(TreeNode node, int diameter) {
+    private int heightOfBinaryTree(TreeNode node) {
 
         if (node == null) {
             return 0;
         }
 
-        int lh = heightOfBinaryTree(node.left, diameter);
-        int rh = heightOfBinaryTree(node.right, diameter);
+        int lh = heightOfBinaryTree(node.left);
+        int rh = heightOfBinaryTree(node.right);
 
         diameter = Math.max(diameter, lh+rh);
 
@@ -37,8 +39,7 @@ public class BinaryTreeDiameter {
     public int inorder(TreeNode root) {
         //height(root, 0, 0);
         //inorderHelper(root);
-        int diameter = Integer.MIN_VALUE;
-        heightOfBinaryTree(root, diameter);
+        heightOfBinaryTree(root);
         return -1;
     }
 
