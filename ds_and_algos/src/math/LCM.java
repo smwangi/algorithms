@@ -7,20 +7,14 @@ package math;
  */
 public class LCM {
 
-    public static void main(String[] args) {
-        
-        findLcm(72, 120);
-    }
-    static void findLcm(int a, int b){
+    static int findLcm(int a, int b){
 
         int lcm = (a > b)? a : b;
         
         while(true){
             
             if(lcm%a == 0 && lcm % b == 0){
-                //System.out.println(lcm);
-                System.out.printf("LCM of %d and %d is %d ",a,b,lcm);
-                break;
+                return lcm;
             }
             ++lcm;
         }
