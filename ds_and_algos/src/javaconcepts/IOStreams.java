@@ -11,9 +11,9 @@ import java.util.Scanner;
 
 import javax.imageio.IIOException;
 /**
- * IO_NIO
+ * IOStreams
  */
-public class IO_NIO {
+public class IOStreams {
 
     public static void main(String[] args) throws IOException {
         
@@ -21,7 +21,7 @@ public class IO_NIO {
         console();
     }
 
-    static void ByteStream() throws IOException{
+    static void byteStream() throws IOException{
         FileInputStream in = null;
         FileOutputStream out = null;
 
@@ -47,7 +47,7 @@ public class IO_NIO {
         }
     }
 
-    static void CharacterStream() throws IOException{
+    static void characterStream() throws IOException{
     
         FileReader in = null;
         FileWriter out = null;
