@@ -1,7 +1,7 @@
 package interviews;
 
 
-import java.util.*;
+import java.util.HashSet;
 
 public class Toptal {
 

@@ -1,6 +1,6 @@
 package javaconcepts;
 
-import java.util.*;
+import java.util.HashMap;
 /**
  * MapOrDefault
  */

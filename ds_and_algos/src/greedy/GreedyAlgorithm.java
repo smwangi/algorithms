@@ -45,7 +45,7 @@ public class GreedyAlgorithm {
 
             double totalValue = 0d;
             for (Item i : items) {
-                int currentWeight = (int)Math.min(i.weight, capacity);
+                int currentWeight = Math.min(i.weight, capacity);
                 double currentValue = i.cost * currentWeight;
 
                 capacity -= currentWeight;

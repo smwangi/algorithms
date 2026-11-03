@@ -1,6 +1,11 @@
 package arrays;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0?

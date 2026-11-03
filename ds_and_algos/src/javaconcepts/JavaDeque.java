@@ -1,6 +1,9 @@
 package javaconcepts;
 
-import java.util.*;
+import java.util.Deque;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Scanner;
 
 /**
  * In computer science, a double-ended queue (dequeue, often abbreviated to deque, pronounced deck)

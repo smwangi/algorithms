@@ -24,7 +24,8 @@ public class HappyNumber {
         while (unique.add(n)){
             int value = 0;
             while (n > 0){
-                value += Math.pow(n%10,2);
+                int digit = n % 10;
+                value += digit * digit;
                 n/=10;
             }
             n = value;

@@ -1,14 +1,15 @@
 package trees;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Queue;
+
 /**
  * Given a binary tree, print its nodes level by level in reverse order.
  *
  * Simple solution would to print all nodes of level h first, followed by h-1, until level 1, where h is the
  * tree's height. We can print all nodes present in a level by modifying the preorder traversal on the tree.
  */
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Queue;
 public class ReverseLevelOrderBinaryTree {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(15);

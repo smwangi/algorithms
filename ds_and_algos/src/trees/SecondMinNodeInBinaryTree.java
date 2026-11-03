@@ -1,6 +1,7 @@
 package trees;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 /**
  * Given a non-empty special binary tree consisting of nodes with the non-negative value,
  * where each node in this tree has exactly two or zero sub-node. If the node has two sub-nodes,

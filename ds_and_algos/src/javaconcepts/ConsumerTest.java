@@ -1,6 +1,6 @@
 package javaconcepts;
 
-import java.util.function.*;
+import java.util.function.Consumer;
 /**
  * ConsumerTest
  */
