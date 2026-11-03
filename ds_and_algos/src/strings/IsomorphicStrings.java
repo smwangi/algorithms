@@ -2,7 +2,13 @@ package strings;
 
 
 import java.math.BigInteger;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentSkipListSet;
 
 /**
@@ -36,12 +42,6 @@ import java.util.concurrent.ConcurrentSkipListSet;
 public class IsomorphicStrings {
     public static void main(String[] args) {
 
-       // System.out.println(ismorphic(str1,str2));
-        //System.out.println(smallest(125));
-        //System.out.println(smallestOneZeroMultiple(1));
-        //System.out.println(Long.parseLong("111",2));
-        //String str = "0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101";
-        //System.out.println(nonNegNumV(str));
         int[]arr = {3,5,6,3,3,5};
         System.out.println(equalIndices(arr));
     }

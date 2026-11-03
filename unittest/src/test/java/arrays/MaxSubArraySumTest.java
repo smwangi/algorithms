@@ -13,6 +13,7 @@ class MaxSubArraySumTest {
     static Stream<Arguments> scenarios() {
         return Stream.of(
                 Arguments.of(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}, 6),
+                Arguments.of(new int[]{5, 4, -1, 7, 8}, 23),
                 Arguments.of(new int[]{5}, 5),
                 Arguments.of(new int[]{-1, -2}, -1),
                 Arguments.of(new int[]{-3, -1, -2}, -1),
@@ -24,6 +25,7 @@ class MaxSubArraySumTest {
     @ParameterizedTest
     @MethodSource("scenarios")
     void findsLargestContiguousSum(int[] input, int expected) {
-        assertEquals(expected, new MaxSubArraySum().printMaxSubArrSum(input));
+        assertEquals(expected, MaxSubArraySum.kadane(input));
+        assertEquals(expected, MaxSubArraySum.kadaneDp(input));
     }
 }

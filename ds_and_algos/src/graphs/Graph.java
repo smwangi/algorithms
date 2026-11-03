@@ -22,7 +22,7 @@ public class Graph {
     }
     
     //Create Graph
-    @SuppressWarnings({"unchecked"})
+    @SuppressWarnings({"unchecked", "rawtypes"})
     Graph(int v) {
         V = v;
         adj = new LinkedList[v];

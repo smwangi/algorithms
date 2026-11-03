@@ -1,7 +1,10 @@
 package design;
 
 import java.io.File;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class FileSystem {
     public enum FileType {
@@ -89,7 +92,6 @@ public class FileSystem {
             for (Map.Entry<Integer, Entity> f : fs.entrySet()) {
                 Entity e = f.getValue();
                 if (e.fileType == FileType.Directory) {
-                    // total += diskUsage(f);
                 } else {
                     total += e.size;
                 }

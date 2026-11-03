@@ -1,6 +1,11 @@
 package arrays;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0?
@@ -49,7 +54,6 @@ public class ThreeSum {
         Set<List<Integer>> res = new HashSet<>();
 
         for(int i = 0; i < nums.length;i++){
-            //int current = nums[i];
             int l = i + 1;
             int r =  nums.length -1;
             while (l < r) {

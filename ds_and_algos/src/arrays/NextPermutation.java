@@ -1,6 +1,6 @@
 package arrays;
 
-import java.util.*;
+import java.util.Arrays;
 /**
  * NextPermutation
  * Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
@@ -45,7 +45,6 @@ public class NextPermutation {
         //find decreasing digit
         int mark = -1;
         for (int i = arr.length-1; i> 0; i--){
-            //System.out.print(arr[i]+" "+arr[i-1]+" ");
             if (arr[i] > arr[i-1]) {
                 mark = i-1;
                 break;
@@ -63,7 +62,6 @@ public class NextPermutation {
             }
         }
         swap(arr, mark, index);
-        //System.out.println(mark+1+" "+index);
         reverse(arr, mark+1, arr.length-1);
         System.out.print(Arrays.toString(arr));
     }

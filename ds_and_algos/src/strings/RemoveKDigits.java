@@ -43,15 +43,12 @@ public class RemoveKDigits {
             return "0";
 
         StringBuilder sb = new StringBuilder(num);
-    //System.out.println(sb.length());
         for(int j = 0; j < k; j++){
             int i = 0;
 
             while (i < sb.length() - 1 && sb.charAt(i) <= sb.charAt(i+1) ){
-               // System.out.println(i);
                 i++;
             }
-           // System.out.print(" i "+i);
             sb.delete(i, i + 1);
         }
         int i = 0;

@@ -4,7 +4,6 @@ public class ShortestDistanceBtnNumbers {
 
     public static void main(String[] args) {
         int[] arr = {3, 5, 4, 2, 6, 5, 6, 6, 5, 4, 8, 3};
-        //int[] arr = {3, 5, 4, 2, 6, 3, 0, 0, 5, 4, 8, 3};
         int x = 3;
         int y = 6;
         System.out.println("Minimum distance between " + x + " and " + y + " is " + shortestDistance(arr, x, y));

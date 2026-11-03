@@ -22,7 +22,6 @@ public class MergeSortedArray {
         
     }
     static int[] merge(int[] foo, int[] bar) {
-        //int m = nums1.length, n = nums2.length;
         /*int first = nums1.length - 1, second = nums2.length - 1;
         int i = first + second - 1;
         System.out.println(i);

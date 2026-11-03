@@ -16,7 +16,6 @@ public class ATM {
        System.out.println( solve(560));
     }
     static int minimalNotes(int n){
-        //int minimal = Integer.MAX_VALUE;
         if(n%10 != 0)
             return -1;
         int[] denom = {10,20,50,100,200,500};
@@ -28,18 +27,15 @@ public class ATM {
               break;
             }
             int temp = denom[r];
-           // System.out.println("n: "+n+" - temp:"+temp);
             if(n > temp){
                 n = n - temp;//011 091 014 116 00
                 count ++;
-                //r--;
             }else if(n == temp){
                 count++;
                 break;
             }else if( n < temp){
                 r--;
             }else{
-                //count = -1;
             }
         }
         System.out.println(" - count:"+count);

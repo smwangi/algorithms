@@ -1,6 +1,11 @@
 package graphs;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
 
 public class DijkstraAlgorithm {
     public static void main(String[] args) {
@@ -146,7 +151,6 @@ public class DijkstraAlgorithm {
         }
 
         for (int i = 0; i < node_count; i++) {
-            //System.out.println("Distance of vertex " + i + " from the source is " + dist.get(i));
             System.out.printf("Source Node(%d) -> Destination Node(%d) : %d%n", source_node, i, dist.get(i));
         }
     }

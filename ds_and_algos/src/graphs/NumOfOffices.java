@@ -19,13 +19,9 @@ public class NumOfOffices {
 
                 for (int j = 0;j<twoDArr[0].length;j++){
                     if(twoDArr[i][j] == 1 && twoDArr[i][j-1] !=1 && twoDArr[i-1][j] != 1){
-                       // System.out.println("1");
-                        //break;
                         colIndex++;
                     }
-                    //j++;
                 }
-            //}
 
         }
         System.out.println(colIndex);

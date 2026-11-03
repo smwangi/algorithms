@@ -1,7 +1,7 @@
 package arrays;
 
 import java.util.stream.IntStream;
-import java.util.*;
+import java.util.Scanner;
 /**
  * ArrayLeftShift
  * 

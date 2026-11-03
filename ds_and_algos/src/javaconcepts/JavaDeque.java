@@ -1,6 +1,9 @@
 package javaconcepts;
 
-import java.util.*;
+import java.util.Deque;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Scanner;
 
 /**
  * In computer science, a double-ended queue (dequeue, often abbreviated to deque, pronounced deck)
@@ -63,9 +66,6 @@ import java.util.*;
 public class JavaDeque {
     public static void main(String[] args) {
 
-        //int n = 6,m = 3;
-        //int[] arr = {5, 3, 5, 2, 3, 2};
-        //uniqueNumbers(arr,n,m);
         Scanner in = new Scanner(System.in);
         Deque<Integer> deque = new LinkedList<>();
         HashSet<Integer> set = new HashSet<>();
@@ -89,16 +89,13 @@ public class JavaDeque {
         in.close();
     }
     static void uniqueNumbers(int[]arr,int n, int m){
-        //Deque<Integer> deque = new LinkedList<>();
         for (int i = 0; i<= n-m;i++){
             for (int j = 0; j<m;j++){
                 if(i+j < n){
-          //          deque.push(arr[i+j]);
                     System.out.print(arr[i+j]+"");
                 }
             }
             System.out.println();
-            //System.out.println(deque.stream().distinct().count());*/
         }
 
     }

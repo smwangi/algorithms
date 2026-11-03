@@ -16,6 +16,5 @@ public class TreeMapHashMap {
         treeMap.put(2,"two");
         treeMap.put(1,"one");
 
-        //assertThat(treeMap.keySet(),contains(1,2,3));
     }
 }

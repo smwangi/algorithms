@@ -11,9 +11,7 @@ public class Sum2DArray {
         int sum = 0;
 
         for(int i = 0; i< a.length; i++){
-           // System.out.println(Arrays.toString( a[i]));
             for(int j = 0; j< a[i].length;j++){
-                //System.out.println(Arrays.toString( a[i])+" i "+i+" j "+j);
                 sum +=a[i][j];
             }
         }

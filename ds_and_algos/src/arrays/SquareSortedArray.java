@@ -33,8 +33,6 @@ public class SquareSortedArray {
     private static int[] sortedSquares(int[] A) {
         int[] nums = new int[A.length];
 
-        //Arrays.sort(A);
-        //System.out.println(Arrays.toString(A));
         for (int i = 0; i < A.length; i++){
             nums[i] = A[i]*A[i];
         }

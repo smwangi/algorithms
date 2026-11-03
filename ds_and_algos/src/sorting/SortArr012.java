@@ -19,7 +19,6 @@ public class SortArr012 {
         int arr_size = arr.length;
         sort012(arr, arr_size);
         System.out.println("Array after seggregation ");
-        //System.out.println(Arrays.toString(sort012(arr, arr_size)));
     }
     /**
      * Approach:The problem is similar to our old post Segregate 0s and 1s in an array, and both of these problems are variation of famous Dutch national flag problem.

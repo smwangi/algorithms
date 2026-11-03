@@ -41,7 +41,7 @@ public class DFSImplementation {
         private LinkedList<Integer>adj_list[];
 
         // graph Constructor: to initialize adjacency lists as per no of vertices
-        @SuppressWarnings({"unchecked"})
+        @SuppressWarnings({"unchecked", "rawtypes"})
         Graph(int v){
             vertices = v;
             adj_list = new LinkedList[v];
@@ -115,7 +115,7 @@ public class DFSImplementation {
         private boolean visited[];
         
         // Graph Creation
-        @SuppressWarnings({"unchecked"})
+        @SuppressWarnings({"unchecked", "rawtypes"})
         GraphDfs(int vertices) {
             adjList = new LinkedList[vertices];
             visited = new boolean[vertices];

@@ -23,7 +23,6 @@ public class ReverseInteger {
 	    		}
 	        }
 	        if(isNegative){
-	           // x = x *-1;
 	        }
 		
 		 return reversed;//isNegative == true ? reversed * -1:reversed;

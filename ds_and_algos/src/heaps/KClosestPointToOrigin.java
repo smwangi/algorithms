@@ -1,7 +1,13 @@
 package heaps;
 
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 /**
  *
@@ -57,14 +63,12 @@ public class KClosestPointToOrigin {
 
         for(Map.Entry<List<Integer>,Integer> entry : map.entrySet()){
             queue.offer(entry);
-            //System.out.println( entry.getKey()+" "+entry.getValue());
         }
 
         while (!queue.isEmpty()){
             Map.Entry<List<Integer>,Integer> temp = queue.poll();
             if(k-- > 0)
                 r[k] = temp.getKey().stream().mapToInt(i->i).toArray();
-                //System.out.println(temp.getKey());
             if(k == 0)break;
         }
 

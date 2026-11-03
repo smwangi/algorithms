@@ -37,7 +37,6 @@ public class Anagram {
         System.out.println(fileAttributes.creationTime());
         System.out.println(Files.isExecutable(path));
         System.out.println(System.getProperty("user.home"));
-        //findAnagrams(s,p).forEach(System.out::println);
         String X = "tommarvoloriddle";        // Tom Marvolo Riddle
         String Y = "iamlordvoldemort";        // I am Lord Voldemort
     
@@ -57,14 +56,10 @@ public class Anagram {
 
         int[] counter = new int[26];
         for(int i=0; i<s.length();i++){
-            //System.out.println(counter[s.charAt(i)-'a']++);
-            //System.out.println(counter[t.charAt(i)-'a']++);
             counter[s.charAt(i)-'a']++;
             counter[t.charAt(i)-'a']--;
         }
-       // System.out.println(Arrays.toString(counter));
         for(int count: counter){
-         //   System.out.print(count+" ");
             if(count != 0)
                 return false;
         }

@@ -184,7 +184,7 @@ public class ImplementQueue {
         }
     }
     
-    /**
+    /*
      * See here for example the canonical use case of queues, a breadth-first search, from wikipedia:
      *
      * 1  procedure BFS(G,v) is

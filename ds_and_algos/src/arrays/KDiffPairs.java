@@ -1,6 +1,10 @@
 package arrays;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
 
 public class KDiffPairs {
 
@@ -20,7 +24,6 @@ public class KDiffPairs {
         int res = 0;
         for(int i : nums) {
             if (map.containsKey(i)) {
-                //System.out.println(k+" <> "+map.get(i)+" <i> "+i);
                 if (k == 0 && map.get(i) == 1) {
                     System.out.println("<>"+map.get(i));
                     map.put(i, map.get(i) + 1);
@@ -33,7 +36,6 @@ public class KDiffPairs {
 
             map.put(i, 1);
         }
-        //System.out.println(res);
         return res;
     }
 
@@ -48,7 +50,6 @@ public class KDiffPairs {
                 int val = map.getOrDefault(i,0);
                 map.put(i,val+1);
             }
-            //map.forEach((x,y) -> System.out.println(x+" : "+y));
             Collection<Integer> list = map.values();
             for(Integer i : list)
                 if(i > 1)result++;

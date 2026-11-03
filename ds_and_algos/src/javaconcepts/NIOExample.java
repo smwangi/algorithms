@@ -4,8 +4,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
-import java.nio.file.*;
-import java.nio.file.attribute.*;
+import java.nio.file.DirectoryIteratorException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.FileSystems;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.UserPrincipal;
 import static java.nio.file.FileVisitResult.CONTINUE;
 
 public class NIOExample {
@@ -47,7 +54,6 @@ public class NIOExample {
         }
         PrintFiles printFiles=new PrintFiles();
         Files.walkFileTree(test,printFiles);
-        //printFiles.postVisitDirectory(test,BasicFileAttributes.class);
     }
 
     /**

@@ -19,9 +19,7 @@ public class SimplePigLatin {
         for(int i =0; i < words.length; i++){
             char[] arr = words[i].toCharArray();
             swap(arr,arr.length-1);
-            //System.out.println(String.valueOf(arr)+"ay");
             boolean isChar = String.valueOf(arr).matches("^[a-zA-Z]*$");
-            //sb.append(String.valueOf(arr)+"ay").append(" ");
             sb.append(arr);
             if(isChar)
                 sb.append("ay ");

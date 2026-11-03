@@ -2,7 +2,7 @@ package strings;
 
 
 import java.io.IOException;
-import java.util.*;
+import java.util.Scanner;
 /**
  * AnagramDelete
  */
@@ -12,8 +12,6 @@ public class AnagramDelete {
     private static final int CHARS = 26;
     public static void main(String[] args) throws IOException {
 
-        //BufferedWriter writer = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
-
         String a = scan.nextLine();
         String b = scan.nextLine();
 
@@ -21,10 +19,6 @@ public class AnagramDelete {
 
         System.out.println("Number of chars to delete: "+String.valueOf(res));
 
-        // writer.write(String.valueOf(res));
-        // writer.newLine();
-
-        // writer.close();
         scan.close();
     }
 
@@ -36,7 +30,6 @@ public class AnagramDelete {
 
         for(int i = 0; i<a.length();i++){
             arr[a.charAt(i)-'a']++;
-            //System.out.println(a.charAt(i));
             
         }
 
@@ -47,15 +40,8 @@ public class AnagramDelete {
         for(int i = 0; i<arr.length;i++){
             System.out.println(arr[i]);
         }
-        // System.out.println(arr['b'-'a']++);
-        // System.out.println(arr['c'-'a']++);
-        // System.out.println(arr['a'-'a']++);
-        // System.out.println(arr['d'-'a']++);
-        // System.out.println(arr['e'-'a']++);
-        // System.out.println(arr['h'-'a']++);
 
         for(int i = 0; i<arr.length;i++){
-            //System.out.print(arr[i]+" ");
         }
 
         int ans = 0;
