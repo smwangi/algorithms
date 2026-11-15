@@ -1,6 +1,6 @@
 # Algorithms
 
-Data structures and algorithms practice in Java 11+.
+Data structures and algorithms practice in Java 25.
 
 - `ds_and_algos/src/` — implementations, one package per topic (`arrays`, `graphs`, `trees`, ...)
 - `unittest/src/test/java/` — JUnit 5 tests, mirroring the same packages
